@@ -22,7 +22,7 @@
           </ul>
         </nav>
         <div class="flex items-center h-full ml-auto">
-          <ProfileImage v-if="IsLoggedIn" />
+          <ProfileImage v-if="isLoggedIn" />
           <ActionButton v-else />
         </div>
       </div>
