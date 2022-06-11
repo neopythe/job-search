@@ -44,5 +44,17 @@ describe('MainNav', () => {
       profileImage = wrapper.find('[data-test="profile-image"]')
       expect(profileImage.exists()).toBe(true)
     })
+
+    it('displays subnavigation menu with additional information', async () => {
+      const wrapper = shallowMount(MainNav)
+      let subNav = wrapper.find('[data-test="subnav"]')
+      expect(subNav.exists()).toBe(false)
+
+      const loginButton = wrapper.find('[data-test="login-button"]')
+      await loginButton.trigger('click')
+
+      subNav = wrapper.find('[data-test="subnav"]')
+      expect(subNav.exists()).toBe(true)
+    })
   })
 })
