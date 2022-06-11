@@ -5,7 +5,7 @@
       <br />
       for everyone
     </h1>
-    <h2>Find your next job at Gaggle.</h2>
+    <h2 class="text-2xl">Find your next job at Gaggle.</h2>
   </section>
 </template>
 
