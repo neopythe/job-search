@@ -28,4 +28,12 @@ describe('Headline', () => {
     expect(actionPhrase.text()).toBe('Create for everyone')
     jest.useRealTimers()
   })
+
+  it('removes interval when component disappears', () => {
+    jest.useFakeTimers('legacy')
+    const wrapper = mount(Headline)
+    wrapper.unmount()
+    expect(clearInterval).toHaveBeenCalled()
+    jest.useRealTimers()
+  })
 })
