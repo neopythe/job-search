@@ -6,11 +6,7 @@
     <div class="flex flex-nowrap flex-1 h-full text-base">
       <div class="relative flex items-center flex-1 h-full pr-3">
         <label class="absolute left-0 -top-8">Role</label>
-        <TextInput
-          placeholder="Software engineer"
-          :value="role"
-          @handle-input="role = $event"
-        />
+        <TextInput v-model="role" placeholder="Software engineer" />
       </div>
       <span
         class="flex items-center h-full px-3 border-l border-r border-brand-gray-3 bg-brand-gray-2 font-light"
@@ -18,11 +14,7 @@
       >
       <div class="relative flex items-center flex-1 h-full pl-3">
         <label class="absolute left-3 -top-8">Where?</label>
-        <TextInput
-          placeholder="Los Angeles"
-          :value="location"
-          @handle-input="location = $event"
-        />
+        <TextInput v-model="location" placeholder="Los Angeles" />
       </div>
     </div>
     <ActionButton text="Search" type="secondary" class="rounded-r-3xl" />
