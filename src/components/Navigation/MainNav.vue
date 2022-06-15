@@ -6,7 +6,7 @@
       >
         <router-link
           :to="{ name: 'Home' }"
-          class="flex items-center h-full text-xl"
+          class="flex items-center h-full text-xl whitespace-nowrap"
           >Gaggle Careers</router-link
         >
         <nav class="h-full ml-12">
