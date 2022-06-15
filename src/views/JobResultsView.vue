@@ -10,7 +10,7 @@ export default {
   name: 'JobResultsView',
   computed: {
     experiment() {
-      console.log(this.$route)
+      console.log(this.$router)
       return 'Irrelevant'
     },
   },
