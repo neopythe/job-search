@@ -6,7 +6,7 @@
     <div class="flex flex-nowrap flex-1 h-full text-base">
       <div class="relative flex items-center flex-1 h-full pr-3">
         <label class="absolute left-0 -top-8">Role</label>
-        <TextInput placeholder="Software engineer" />
+        <TextInput placeholder="Software engineer" @handleInput="updateRole" />
       </div>
       <span
         class="flex items-center h-full px-3 border-l border-r border-brand-gray-3 bg-brand-gray-2 font-light"
@@ -35,6 +35,11 @@ export default {
       role: '',
       location: '',
     }
+  },
+  methods: {
+    updateRole(payload) {
+      console.log(payload)
+    },
   },
 }
 </script>
