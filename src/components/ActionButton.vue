@@ -26,7 +26,7 @@ export default {
 
 <style scoped>
 button {
-  @apply px-5 py-3 text-xs font-bold;
+  @apply px-5 py-3 text-xs;
 }
 
 .primary {
