@@ -52,14 +52,7 @@ export default {
   },
   data() {
     return {
-      menuItems: [
-        'Teams',
-        'Locations',
-        'Life at Gaggle',
-        'How we hire',
-        'Students',
-        'Jobs',
-      ],
+      menuItems: ['Teams', 'Locations', 'Benefits', 'Jobs', 'Students'],
       isLoggedIn: false,
     }
   },
