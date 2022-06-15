@@ -25,10 +25,9 @@ describe('MainNav', () => {
     expect(navigationMenuTexts).toEqual([
       'Teams',
       'Locations',
-      'Life at Gaggle',
-      'How we hire',
-      'Students',
+      'Benefits',
       'Jobs',
+      'Students',
     ])
   })
 
