@@ -5,11 +5,11 @@
       class="block mx-auto bg-white border border-solid border-brand-gray-1 rounded hover:shadow-gray"
     >
       <div class="pt-5 pb-2 mx-8 border-b border-solid border-brand-gray-2">
-        <h2 class="mb-2 text-2xl">
+        <h2 class="mb-2 text-2xl font-semibold">
           {{ job.title }}
         </h2>
         <div class="flex flex-row align-middle">
-          <div class="mr-5">
+          <div class="mr-5 font-semibold">
             <span>{{ job.organization }}</span>
           </div>
           <div>
@@ -27,9 +27,9 @@
       </div>
       <div class="px-8 py-4">
         <div>
-          <h3 class="mt-1 mb-2">Qualifications</h3>
+          <h3 class="mt-1 mb-2 font-semibold">Qualifications:</h3>
           <div>
-            <ul class="pl-8 list-disc">
+            <ul class="pl-8 list-disc marker:text-brand-gray-1">
               <li
                 v-for="qualification in job.minimumQualifications"
                 :key="qualification"
@@ -40,7 +40,9 @@
           </div>
         </div>
         <div class="mt-3 text-center">
-          <router-link :to="jobPageLink" class="text-sm text-brand-blue-1"
+          <router-link
+            :to="jobPageLink"
+            class="text-sm text-brand-blue-1 font-semibold"
             >Expand</router-link
           >
         </div>
