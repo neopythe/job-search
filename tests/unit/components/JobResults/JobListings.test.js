@@ -74,10 +74,11 @@ describe('JobListings', () => {
       expect(previousPage.exists()).toBe(false)
     })
 
-    it('shows link to next page', () => {
+    it('shows link to next page', async () => {
       const queryParams = { page: '1' }
       const $route = createRoute(queryParams)
       const wrapper = shallowMount(JobListings, createConfig($route))
+      await flushPromises()
       const nextPage = wrapper.find('[data-test="next-page-link"]')
       expect(nextPage.exists()).toBe(true)
     })
