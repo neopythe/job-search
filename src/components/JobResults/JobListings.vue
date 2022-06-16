@@ -8,6 +8,11 @@
         data-test="job-listing"
       />
     </ol>
+    <div class="mt-8 mx-auto">
+      <div class="flex flex-row flex-nowrap">
+        <p class="text-sm flex-grow">Page {{ currentPage }}</p>
+      </div>
+    </div>
   </main>
 </template>
 
@@ -27,9 +32,11 @@ export default {
     }
   },
   computed: {
+    currentPage() {
+      return +this.$route.query.page || 1
+    },
     displayedJobs() {
-      const pageNumber = +this.$route.query.page || 1
-      const indices = [(pageNumber - 1) * 10, pageNumber * 10]
+      const indices = [(this.currentPage - 1) * 10, this.currentPage * 10]
       return this.jobs.slice(...indices)
     },
   },
