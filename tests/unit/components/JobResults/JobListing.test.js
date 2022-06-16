@@ -19,7 +19,7 @@ describe('JobListing', () => {
     },
     global: {
       stubs: {
-        $router: RouterLinkStub,
+        'router-link': RouterLinkStub,
       },
     },
   })
@@ -50,5 +50,15 @@ describe('JobListing', () => {
     const wrapper = mount(JobListing, createConfig(jobProps))
     expect(wrapper.text()).toMatch('Code')
     expect(wrapper.text()).toMatch('Develop')
+  })
+
+  it('links to individual job page', () => {
+    const jobProps = createJobProps({
+      id: 15,
+    })
+    const wrapper = mount(JobListing, createConfig(jobProps))
+    const jobPageLink = wrapper.findComponent(RouterLinkStub)
+    const toProp = jobPageLink.props('to')
+    expect(toProp).toBe('/jobs/results/15')
   })
 })
