@@ -37,7 +37,7 @@ describe('JobListings', () => {
     expect(axios.get).toHaveBeenCalledWith('http://localhost:3000/jobs')
   })
 
-  it('creates a job listing for a maximum of 10 jobs', async () => {
+  it('creates a job listing for a maximum of 10 jobs per page', async () => {
     axios.get.mockResolvedValue({ data: Array(15).fill({}) })
     const queryParams = { page: '1' }
     const $route = createRoute(queryParams)
@@ -66,10 +66,11 @@ describe('JobListings', () => {
   })
 
   describe('when user is on first page of job results', () => {
-    it('does not show link to previous page', () => {
+    it('does not show link to previous page', async () => {
       const queryParams = { page: '1' }
       const $route = createRoute(queryParams)
       const wrapper = shallowMount(JobListings, createConfig($route))
+      await flushPromises()
       const previousPage = wrapper.find('[data-test="previous-page-link"]')
       expect(previousPage.exists()).toBe(false)
     })
@@ -81,6 +82,28 @@ describe('JobListings', () => {
       await flushPromises()
       const nextPage = wrapper.find('[data-test="next-page-link"]')
       expect(nextPage.exists()).toBe(true)
+    })
+  })
+
+  describe('when user is on last page of job results', () => {
+    it('does not show link to next page', async () => {
+      axios.get.mockResolvedValue({ data: Array(15).fill({}) })
+      const queryParams = { page: '2' }
+      const $route = createRoute(queryParams)
+      const wrapper = shallowMount(JobListings, createConfig($route))
+      await flushPromises()
+      const nextPage = wrapper.find('[data-test="next-page-link"]')
+      expect(nextPage.exists()).toBe(false)
+    })
+
+    it('shows link to previous page', async () => {
+      axios.get.mockResolvedValue({ data: Array(15).fill({}) })
+      const queryParams = { page: '2' }
+      const $route = createRoute(queryParams)
+      const wrapper = shallowMount(JobListings, createConfig($route))
+      await flushPromises()
+      const previousPage = wrapper.find('[data-test="previous-page-link"]')
+      expect(previousPage.exists()).toBe(true)
     })
   })
 })
