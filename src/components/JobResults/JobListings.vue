@@ -28,7 +28,9 @@ export default {
   },
   computed: {
     displayedJobs() {
-      return this.jobs.slice(0, 10)
+      const pageNumber = +this.$route.query.page || 1
+      const indices = [(pageNumber - 1) * 10, pageNumber * 10]
+      return this.jobs.slice(...indices)
     },
   },
   async mounted() {
