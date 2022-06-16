@@ -35,6 +35,15 @@ export default {
     currentPage() {
       return +this.$route.query.page || 1
     },
+    previousPage() {
+      const previousPage = this.currentPage - 1
+      return previousPage >= 1 ? previousPage : null
+    },
+    nextPage() {
+      const nextPage = this.currentPage + 1
+      const maxPage = this.jobs.length / 10
+      return nextPage <= maxPage ? nextPage : null
+    },
     displayedJobs() {
       const indices = [(this.currentPage - 1) * 10, this.currentPage * 10]
       return this.jobs.slice(...indices)
