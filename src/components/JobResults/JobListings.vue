@@ -1,7 +1,12 @@
 <template>
   <main class="flex-auto p-8 bg-brand-gray-2">
     <ol>
-      <JobListing v-for="job in jobs" :key="job.id" :job="job" />
+      <JobListing
+        v-for="job in jobs"
+        :key="job.id"
+        :job="job"
+        data-test="job-listing"
+      />
     </ol>
   </main>
 </template>
