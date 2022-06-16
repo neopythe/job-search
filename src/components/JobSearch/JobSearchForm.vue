@@ -7,7 +7,11 @@
     <div class="flex flex-nowrap flex-1 h-full text-base">
       <div class="relative flex items-center flex-1 h-full pr-3">
         <label class="absolute left-0 -top-8">Role</label>
-        <TextInput v-model="role" placeholder="Software engineer" />
+        <TextInput
+          v-model="role"
+          placeholder="Software engineer"
+          data-test="role-input"
+        />
       </div>
       <span
         class="flex items-center h-full px-3 border-l border-r border-brand-gray-3 bg-brand-gray-2 font-light"
@@ -15,10 +19,19 @@
       >
       <div class="relative flex items-center flex-1 h-full pl-3">
         <label class="absolute left-3 -top-8">Where?</label>
-        <TextInput v-model="location" placeholder="Los Angeles" />
+        <TextInput
+          v-model="location"
+          placeholder="Los Angeles"
+          data-test="location-input"
+        />
       </div>
     </div>
-    <ActionButton text="Search" type="secondary" class="rounded-r-3xl" />
+    <ActionButton
+      text="Search"
+      type="secondary"
+      class="rounded-r-3xl"
+      data-test="form-submit-button"
+    />
   </form>
 </template>
 
