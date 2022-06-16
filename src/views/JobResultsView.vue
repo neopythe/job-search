@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-row flex-nowrap w-full">
     <JobFiltersSidebar />
     <JobListings />
   </div>
