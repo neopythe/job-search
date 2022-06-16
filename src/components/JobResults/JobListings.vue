@@ -16,12 +16,14 @@
             v-if="previousPage"
             :to="{ name: 'JobResults', query: { page: previousPage } }"
             class="mx-3 text-sm font-semibold text-brand-blue-1"
+            data-test="previous-page-link"
             >Previous</router-link
           >
           <router-link
             v-if="nextPage"
             :to="{ name: 'JobResults', query: { page: nextPage } }"
             class="mx-3 text-sm font-semibold text-brand-blue-1"
+            data-test="next-page-link"
             >Next</router-link
           >
         </div>

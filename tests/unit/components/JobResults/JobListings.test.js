@@ -58,10 +58,28 @@ describe('JobListings', () => {
 
   describe('when query params include page number', () => {
     it('displays page number', () => {
-      const queryParams = { page: 3 }
+      const queryParams = { page: '3' }
       const $route = createRoute(queryParams)
       const wrapper = shallowMount(JobListings, createConfig($route))
       expect(wrapper.text()).toMatch('Page 3')
+    })
+  })
+
+  describe('when user is on first page of job results', () => {
+    it('does not show link to previous page', () => {
+      const queryParams = { page: '1' }
+      const $route = createRoute(queryParams)
+      const wrapper = shallowMount(JobListings, createConfig($route))
+      const previousPage = wrapper.find('[data-test="previous-page-link"]')
+      expect(previousPage.exists()).toBe(false)
+    })
+
+    it('shows link to next page', () => {
+      const queryParams = { page: '1' }
+      const $route = createRoute(queryParams)
+      const wrapper = shallowMount(JobListings, createConfig($route))
+      const nextPage = wrapper.find('[data-test="next-page-link"]')
+      expect(nextPage.exists()).toBe(true)
     })
   })
 })
