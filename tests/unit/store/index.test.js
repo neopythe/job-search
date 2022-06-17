@@ -5,6 +5,11 @@ describe('state', () => {
     const startingState = state()
     expect(startingState.isLoggedIn).toBe(false)
   })
+
+  it('stores job listings', () => {
+    const startingState = state()
+    expect(startingState.jobs).toEqual([])
+  })
 })
 
 describe('mutations', () => {
