@@ -61,7 +61,6 @@ export default {
         { text: 'Jobs', url: '/jobs/results' },
         { text: 'Students', url: '/' },
       ],
-      isLoggedIn: false,
     }
   },
   computed: {
@@ -70,6 +69,9 @@ export default {
         'h-16': !this.isLoggedIn,
         'h-32': this.isLoggedIn,
       }
+    },
+    isLoggedIn() {
+      return this.$store.state.isLoggedIn
     },
   },
   methods: {
