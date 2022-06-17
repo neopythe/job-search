@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1655415712040" clover="3.2.0">
-  <project timestamp="1655415712040" name="All files">
-    <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6" elements="21" coveredelements="21" complexity="0" loc="15" ncloc="15" packages="4" files="6" classes="6"/>
+<coverage generated="1655443857055" clover="3.2.0">
+  <project timestamp="1655443857055" name="All files">
+    <metrics statements="20" coveredstatements="20" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8" elements="28" coveredelements="28" complexity="0" loc="20" ncloc="20" packages="5" files="7" classes="7"/>
     <package name="components.JobResults">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="JobListing.vue" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\components\JobResults\JobListing.vue">
@@ -28,12 +28,23 @@
       <file name="ActionButton.vue" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\components\Shared\ActionButton.vue">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="8" count="3" type="stmt"/>
-        <line num="20" count="8" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
       </file>
       <file name="TextInput.vue" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\components\Shared\TextInput.vue">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="12" count="2" type="stmt"/>
         <line num="28" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="store">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="index.js" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\store\index.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
       </file>
     </package>
     <package name="utils">
