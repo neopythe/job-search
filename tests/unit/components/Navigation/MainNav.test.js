@@ -44,7 +44,7 @@ describe('MainNav', () => {
     })
   })
 
-  describe('when user logs in', () => {
+  describe('when user is logged in', () => {
     it('displays user profile picture', () => {
       const store = createStore({
         state() {
@@ -71,6 +71,20 @@ describe('MainNav', () => {
 
       const subNav = wrapper.find('[data-test="subnav"]')
       expect(subNav.exists()).toBe(true)
+    })
+  })
+
+  describe('when user is logged out', () => {
+    it('issues call to Vuex to login user', async () => {
+      const store = createStore()
+      const commit = jest.fn()
+      store.commit = commit
+      const wrapper = shallowMount(MainNav, createConfig(store))
+      const loginButton = wrapper.find('[data-test="login-button"]')
+
+      await loginButton.trigger('click')
+
+      expect(commit).toHaveBeenCalledWith('LOGIN_USER')
     })
   })
 })
