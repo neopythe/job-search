@@ -30,6 +30,16 @@ describe('JobListings', () => {
     },
   })
 
+  describe('when component mounts', () => {
+    it('makes call to fetch jobs from API', () => {
+      const $route = createRoute()
+      const dispatch = jest.fn()
+      const $store = createStore({ dispatch })
+      shallowMount(JobListings, createConfig($route, $store))
+      expect(dispatch).toHaveBeenCalledWith('FETCH_JOBS')
+    })
+  })
+
   it('creates a job listing for a maximum of 10 jobs per page', async () => {
     const queryParams = { page: '1' }
     const $route = createRoute(queryParams)
