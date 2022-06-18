@@ -9,6 +9,7 @@
           <ActionButton text="Clear Filters" type="sidebar" />
         </div>
       </div>
+      <Accordion header="Degree" />
       <Accordion header="Job types">
         <p>Placeholder for now</p>
       </Accordion>
