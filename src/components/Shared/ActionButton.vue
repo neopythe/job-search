@@ -26,14 +26,18 @@ export default {
 
 <style scoped>
 button {
-  @apply px-5 py-3 text-xs font-semibold;
+  @apply px-5 py-3 font-semibold;
 }
 
 .primary {
-  @apply rounded text-white bg-brand-blue-1 hover:shadow-blue;
+  @apply rounded text-white bg-brand-blue-1 hover:shadow-blue text-xs;
 }
 
 .secondary {
   @apply text-brand-blue-1 bg-transparent hover:bg-brand-blue-2 hover:text-white text-base;
+}
+
+.sidebar {
+  @apply px-0 text-brand-blue-1 bg-transparent hover:shadow-blue text-sm;
 }
 </style>
