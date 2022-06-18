@@ -33,19 +33,15 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { mapState } from 'vuex'
 
+import { FETCH_JOBS } from '@/store'
 import JobListing from '@/components/JobResults/JobListing.vue'
 
 export default {
   name: 'JobListings',
   components: {
     JobListing,
-  },
-  data() {
-    return {
-      jobs: [],
-    }
   },
   computed: {
     currentPage() {
@@ -64,11 +60,10 @@ export default {
       const indices = [(this.currentPage - 1) * 10, this.currentPage * 10]
       return this.jobs.slice(...indices)
     },
+    ...mapState(['jobs']),
   },
   async mounted() {
-    const baseUrl = process.env.VUE_APP_API_URL
-    const response = await axios.get(`${baseUrl}/jobs`)
-    this.jobs = response.data
+    this.$store.dispatch(FETCH_JOBS)
   },
 }
 </script>
