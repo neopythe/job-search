@@ -4,7 +4,7 @@
       class="flex flex-wrap items-center justify-between cursor-pointer"
       @click="open"
     >
-      <h3 class="text-base font-semibold">Organizations</h3>
+      <h3 class="text-base font-semibold">{{ header }}</h3>
       <font-awesome-icon :icon="caretIcon" />
     </div>
     <div v-if="isOpen" class="w-full mt-5">
@@ -16,6 +16,12 @@
 <script>
 export default {
   name: 'Accordion',
+  props: {
+    header: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       isOpen: false,

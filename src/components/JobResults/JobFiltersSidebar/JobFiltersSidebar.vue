@@ -9,7 +9,10 @@
           <ActionButton text="Clear Filters" type="sidebar" />
         </div>
       </div>
-      <Accordion>
+      <Accordion header="Job types">
+        <p>Placeholder for now</p>
+      </Accordion>
+      <Accordion header="Organizations">
         <div class="mt-5">
           <fieldset>
             <ul class="flex flex-row flex-wrap">
