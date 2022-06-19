@@ -4,22 +4,24 @@
       :to="jobPageLink"
       class="block mx-auto bg-white border border-solid border-brand-gray-1 rounded hover:shadow-gray"
     >
-      <div class="pt-5 pb-2 mx-8 border-b border-solid border-brand-gray-2">
-        <h2 class="mb-2 text-2xl font-semibold">
+      <div class="pt-5 pb-2 mx-8 border-b border-solid border-brand-gray-1">
+        <h2 class="mb-3 text-2xl font-semibold">
           {{ job.title }}
         </h2>
-        <div class="flex flex-row align-middle">
-          <div class="mr-5 font-semibold">
+        <div class="flex flex-row mb-1">
+          <div class="mr-5 font-semibold text-sm">
             <span>{{ job.organization }}</span>
           </div>
           <div>
-            <ul>
+            <ul class="flex flex-row">
               <li
                 v-for="location in job.locations"
                 :key="location"
-                class="inline-block mr-5"
+                class="mr-5"
               >
-                {{ location }}
+                <p class="text-sm">
+                  {{ location }}
+                </p>
               </li>
             </ul>
           </div>
