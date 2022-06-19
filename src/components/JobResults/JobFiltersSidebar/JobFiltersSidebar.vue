@@ -6,7 +6,7 @@
       <div class="flex flex-row justify-between">
         <h3 class="my-4 text-base font-semibold">What do you want to do?</h3>
         <div class="flex items-center text-sm">
-          <ActionButton text="Clear Filters" type="sidebar" />
+          <ActionButton text="Clear filters" type="sidebar" />
         </div>
       </div>
       <Accordion header="Degree" />
