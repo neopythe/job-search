@@ -17,17 +17,17 @@
       </div>
     </section>
     <Spotlight class="flex flex-row justify-center pb-16">
-      <template #default="slotProps">
+      <template #default="{ img, title, description }">
         <router-link
           :to="{ name: 'JobResults' }"
           class="flex flex-col mx-5 border rounded-lg w-72 bg-brand-gray-2 h-96 overflow-hidden"
         >
-          <img :src="slotProps.img" class="object-contain" />
+          <img :src="img" class="object-contain" />
           <div class="h-48 px-6 py-4 mt-">
             <h3 class="text-lg font-semibold">
-              {{ slotProps.title }}
+              {{ title }}
             </h3>
-            <p class="mt-3 text-sm">{{ slotProps.description }}</p>
+            <p class="mt-3 text-sm">{{ description }}</p>
           </div>
           <router-link
             :to="{ name: 'JobResults' }"
