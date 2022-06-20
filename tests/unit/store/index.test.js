@@ -12,6 +12,11 @@ describe('state', () => {
     const startingState = state()
     expect(startingState.jobs).toEqual([])
   })
+
+  it('stores organizations that the user would like to filter jobs by', () => {
+    const startingState = state()
+    expect(startingState.selectedOrganizations).toEqual([])
+  })
 })
 
 describe('getters', () => {
