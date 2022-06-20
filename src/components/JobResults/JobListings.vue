@@ -36,6 +36,7 @@
 import { mapActions, mapState } from 'vuex'
 
 import { FETCH_JOBS } from '@/store'
+
 import JobListing from '@/components/JobResults/JobListing.vue'
 
 export default {

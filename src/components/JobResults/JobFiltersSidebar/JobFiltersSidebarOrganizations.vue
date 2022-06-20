@@ -20,6 +20,10 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
+import { UNIQUE_ORGANIZATIONS } from '@/store'
+
 import Accordion from '@/components/Shared/Accordion.vue'
 
 export default {
@@ -28,9 +32,7 @@ export default {
     Accordion,
   },
   computed: {
-    UNIQUE_ORGANIZATIONS() {
-      return this.$store.getters.UNIQUE_ORGANIZATIONS
-    },
+    ...mapGetters([UNIQUE_ORGANIZATIONS]),
   },
 }
 </script>

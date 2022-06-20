@@ -43,11 +43,11 @@
 <script>
 import { mapMutations, mapState } from 'vuex'
 
+import { LOGIN_USER } from '@/store'
+
 import ActionButton from '@/components/Shared/ActionButton.vue'
 import ProfileImage from '@/components/Navigation/ProfileImage.vue'
 import SubNav from '@/components/Navigation/SubNav.vue'
-
-import { LOGIN_USER } from '@/store'
 
 export default {
   name: 'MainNav',
