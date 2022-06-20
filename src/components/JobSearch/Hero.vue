@@ -23,7 +23,7 @@
           class="flex flex-col mx-5 border rounded-lg w-72 bg-brand-gray-2 h-96 overflow-hidden"
         >
           <img :src="img" class="object-contain" />
-          <div class="h-48 px-6 py-4 mt-">
+          <div class="h-48 px-6 py-4">
             <h3 class="text-lg font-semibold">
               {{ title }}
             </h3>
