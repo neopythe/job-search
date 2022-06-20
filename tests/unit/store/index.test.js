@@ -51,6 +51,16 @@ describe('mutations', () => {
       expect(state).toEqual({ jobs: ['Job 1', 'Job 2'] })
     })
   })
+
+  describe('ADD_SELECTED_ORGANIZATIONS', () => {
+    it('updates organizations that the user has chosen to filter jobs by', () => {
+      const state = { selectedOrganizations: [] }
+      mutations.ADD_SELECTED_ORGANIZATIONS(state, ['Org 1', 'Org 2'])
+      expect(state).toEqual({
+        selectedOrganizations: ['Org 1', 'Org 2'],
+      })
+    })
+  })
 })
 
 describe('actions', () => {
