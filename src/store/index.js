@@ -15,20 +15,20 @@ export const state = () => {
   }
 }
 
+export const getters = {
+  [UNIQUE_ORGANIZATIONS](state) {
+    const uniqueOrganizations = new Set()
+    state.jobs.forEach(job => uniqueOrganizations.add(job.organization))
+    return uniqueOrganizations
+  },
+}
+
 export const mutations = {
   [LOGIN_USER](state) {
     state.isLoggedIn = true
   },
   [RECEIVE_JOBS](state, jobs) {
     state.jobs = jobs
-  },
-}
-
-export const getters = {
-  [UNIQUE_ORGANIZATIONS](state) {
-    const uniqueOrganizations = new Set()
-    state.jobs.forEach(job => uniqueOrganizations.add(job.organization))
-    return uniqueOrganizations
   },
 }
 
@@ -41,8 +41,8 @@ export const actions = {
 
 const store = createStore({
   state,
-  mutations,
   getters,
+  mutations,
   actions,
   strict: process.env.NODE_ENV !== 'production',
 })
