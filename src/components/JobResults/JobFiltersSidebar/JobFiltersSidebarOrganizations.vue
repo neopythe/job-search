@@ -14,6 +14,7 @@
               :value="organization"
               type="checkbox"
               class="mr-3"
+              @change="selectOrganization"
             />
             <label :for="organization" data-test="organization">{{
               organization
@@ -44,6 +45,9 @@ export default {
   },
   computed: {
     ...mapGetters([UNIQUE_ORGANIZATIONS]),
+  },
+  methods: {
+    selectOrganization() {},
   },
 }
 </script>
