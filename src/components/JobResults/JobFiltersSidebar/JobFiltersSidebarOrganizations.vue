@@ -14,6 +14,7 @@
               :value="organization"
               type="checkbox"
               class="mr-3"
+              :data-test="organization"
               @change="selectOrganization"
             />
             <label :for="organization" data-test="organization">{{
