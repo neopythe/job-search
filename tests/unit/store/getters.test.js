@@ -1,20 +1,6 @@
 import getters from '@/store/getters'
 
 describe('getters', () => {
-  describe('UNIQUE_ORGANIZATIONS', () => {
-    it('finds unique organizations from list of jobs', () => {
-      const state = {
-        jobs: [
-          { organization: 'Gaggle' },
-          { organization: 'MikeRoweSoft' },
-          { organization: 'Gaggle' },
-        ],
-      }
-      const result = getters.UNIQUE_ORGANIZATIONS(state)
-      expect(result).toEqual(new Set(['Gaggle', 'MikeRoweSoft']))
-    })
-  })
-
   describe('FILTERED_JOBS_BY_ORGANIZATIONS', () => {
     it('identifies jobs that are associated with the given organizations', () => {
       const state = {
@@ -49,6 +35,34 @@ describe('getters', () => {
           { organization: 'MikeRoweSoft' },
         ])
       })
+    })
+  })
+
+  describe('UNIQUE_JOB_TYPES', () => {
+    it('finds unique job types from list of jobs', () => {
+      const state = {
+        jobs: [
+          { jobType: 'Full-time' },
+          { jobType: 'Temporary' },
+          { jobType: 'Full-time' },
+        ],
+      }
+      const result = getters.UNIQUE_JOB_TYPES(state)
+      expect(result).toEqual(new Set(['Full-time', 'Temporary']))
+    })
+  })
+
+  describe('UNIQUE_ORGANIZATIONS', () => {
+    it('finds unique organizations from list of jobs', () => {
+      const state = {
+        jobs: [
+          { organization: 'Gaggle' },
+          { organization: 'MikeRoweSoft' },
+          { organization: 'Gaggle' },
+        ],
+      }
+      const result = getters.UNIQUE_ORGANIZATIONS(state)
+      expect(result).toEqual(new Set(['Gaggle', 'MikeRoweSoft']))
     })
   })
 })
