@@ -3,6 +3,7 @@ import { createStore } from 'vuex'
 import getJobs from '@/api/getJobs'
 
 export const UNIQUE_ORGANIZATIONS = 'UNIQUE_ORGANIZATIONS'
+export const FILTERED_JOBS_BY_ORGANIZATIONS = 'FILTERED_JOBS_BY_ORGANIZATIONS'
 
 export const LOGIN_USER = 'LOGIN_USER'
 export const RECEIVE_JOBS = 'RECEIVE_JOBS'
@@ -23,6 +24,11 @@ export const getters = {
     const uniqueOrganizations = new Set()
     state.jobs.forEach(job => uniqueOrganizations.add(job.organization))
     return uniqueOrganizations
+  },
+  [FILTERED_JOBS_BY_ORGANIZATIONS](state) {
+    return state.jobs.filter(job =>
+      state.selectedOrganizations.includes(job.organization)
+    )
   },
 }
 

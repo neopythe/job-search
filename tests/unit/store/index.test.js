@@ -33,6 +33,24 @@ describe('getters', () => {
       expect(result).toEqual(new Set(['Gaggle', 'MikeRoweSoft']))
     })
   })
+
+  describe('FILTERED_JOBS_BY_ORGANIZATIONS', () => {
+    it('identifies jobs that are associated with the given organizations', () => {
+      const state = {
+        jobs: [
+          { organization: 'Gaggle' },
+          { organization: 'Javazon' },
+          { organization: 'MikeRoweSoft' },
+        ],
+        selectedOrganizations: ['Gaggle', 'MikeRoweSoft'],
+      }
+      const filteredJobs = getters.FILTERED_JOBS_BY_ORGANIZATIONS(state)
+      expect(filteredJobs).toEqual([
+        { organization: 'Gaggle' },
+        { organization: 'MikeRoweSoft' },
+      ])
+    })
+  })
 })
 
 describe('mutations', () => {
