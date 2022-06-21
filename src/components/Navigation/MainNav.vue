@@ -43,7 +43,7 @@
 <script>
 import { mapMutations, mapState } from 'vuex'
 
-import { LOGIN_USER } from '@/store'
+import { LOGIN_USER } from '@/store/constants'
 
 import ActionButton from '@/components/Shared/ActionButton.vue'
 import ProfileImage from '@/components/Navigation/ProfileImage.vue'
