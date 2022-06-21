@@ -3,6 +3,7 @@ export const LOGIN_USER = 'LOGIN_USER'
 
 // jobs
 export const FETCH_JOBS = 'FETCH_JOBS'
+export const FILTERED_JOBS = 'FILTERED_JOBS'
 export const RECEIVE_JOBS = 'RECEIVE_JOBS'
 
 // job types
