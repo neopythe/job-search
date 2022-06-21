@@ -88,7 +88,7 @@ describe('getters', () => {
 
       it('identifies if job is associated with given job types', () => {
         const state = {
-          selectedJobTypes: ['Part-time', 'Part-time'],
+          selectedJobTypes: ['Full-time', 'Part-time'],
         }
         const job = { jobType: 'Part-time' }
         const includeJob = getters.INCLUDE_JOB_BY_JOB_TYPE(state)(job)
