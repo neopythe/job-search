@@ -26,6 +26,9 @@ export const getters = {
     return uniqueOrganizations
   },
   [FILTERED_JOBS_BY_ORGANIZATIONS](state) {
+    if (state.selectedOrganizations.length === 0) {
+      return state.jobs
+    }
     return state.jobs.filter(job =>
       state.selectedOrganizations.includes(job.organization)
     )
