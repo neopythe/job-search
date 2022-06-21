@@ -7,6 +7,7 @@ export const RECEIVE_JOBS = 'RECEIVE_JOBS'
 
 // job types
 export const ADD_SELECTED_JOB_TYPES = 'ADD_SELECTED_JOB_TYPES'
+export const FILTERED_JOBS_BY_JOB_TYPES = 'FILTERED_JOBS_BY_JOB_TYPES'
 export const UNIQUE_JOB_TYPES = 'UNIQUE_JOB_TYPES'
 
 // organizations
