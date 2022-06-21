@@ -2,6 +2,8 @@ import {
   FILTERED_JOBS,
   FILTERED_JOBS_BY_JOB_TYPES,
   FILTERED_JOBS_BY_ORGANIZATIONS,
+  INCLUDE_JOB_BY_JOB_TYPE,
+  INCLUDE_JOB_BY_ORGANIZATION,
   UNIQUE_JOB_TYPES,
   UNIQUE_ORGANIZATIONS,
 } from '@/store/constants'
@@ -36,6 +38,14 @@ const getters = {
     return state.jobs.filter(job =>
       state.selectedOrganizations.includes(job.organization)
     )
+  },
+  [INCLUDE_JOB_BY_JOB_TYPE]: state => job => {
+    if (state.selectedJobTypes.length === 0) return true
+    return state.selectedJobTypes.includes(job.jobType)
+  },
+  [INCLUDE_JOB_BY_ORGANIZATION]: state => job => {
+    if (state.selectedOrganizations.length === 0) return true
+    return state.selectedOrganizations.includes(job.organization)
   },
   [UNIQUE_JOB_TYPES](state) {
     const uniqueJobTypes = new Set()
