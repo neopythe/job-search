@@ -9,19 +9,10 @@ import {
 } from '@/store/constants'
 
 const getters = {
-  [FILTERED_JOBS](state) {
-    const noSelectedJobTypes = state.selectedJobTypes.length === 0
-    const noSelectedOrganizations = state.selectedOrganizations.length === 0
-
+  [FILTERED_JOBS](state, getters) {
     return state.jobs
-      .filter(job => {
-        if (noSelectedJobTypes) return true
-        return state.selectedJobTypes.includes(job.jobType)
-      })
-      .filter(job => {
-        if (noSelectedOrganizations) return true
-        return state.selectedOrganizations.includes(job.organization)
-      })
+      .filter(job => getters.INCLUDE_JOB_BY_JOB_TYPE(job))
+      .filter(job => getters.INCLUDE_JOB_BY_ORGANIZATION(job))
   },
   [FILTERED_JOBS_BY_JOB_TYPES](state) {
     if (state.selectedJobTypes.length === 0) {
