@@ -1,6 +1,27 @@
 import getters from '@/store/getters'
 
 describe('getters', () => {
+  describe('FILTERED_JOBS', () => {
+    it('filters jobs by organization and job type', () => {
+      const INCLUDE_JOB_BY_JOB_TYPE = jest.fn().mockReturnValue(true)
+      const INCLUDE_JOB_BY_ORGANIZATION = jest.fn().mockReturnValue(true)
+      const mockGetters = {
+        INCLUDE_JOB_BY_JOB_TYPE,
+        INCLUDE_JOB_BY_ORGANIZATION,
+      }
+
+      const job = { id: 1, title: 'Best job ever' }
+      const state = {
+        jobs: [job],
+      }
+
+      const result = getters.FILTERED_JOBS(state, mockGetters)
+      expect(result).toEqual([job])
+      expect(INCLUDE_JOB_BY_JOB_TYPE).toHaveBeenCalledWith(job)
+      expect(INCLUDE_JOB_BY_ORGANIZATION).toHaveBeenCalledWith(job)
+    })
+  })
+
   describe('INCLUDE_JOB_BY_JOB_TYPE', () => {
     describe('when the user has not selected any job types', () => {
       it('includes job', () => {

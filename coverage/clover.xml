@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1655852875160" clover="3.2.0">
-  <project timestamp="1655852875160" name="All files">
-    <metrics statements="58" coveredstatements="55" conditionals="6" coveredconditionals="6" methods="26" coveredmethods="23" elements="90" coveredelements="84" complexity="0" loc="58" ncloc="58" packages="6" files="13" classes="13"/>
+<coverage generated="1655854101324" clover="3.2.0">
+  <project timestamp="1655854101325" name="All files">
+    <metrics statements="58" coveredstatements="58" conditionals="6" coveredconditionals="6" methods="26" coveredmethods="26" elements="90" coveredelements="90" complexity="0" loc="58" ncloc="58" packages="6" files="13" classes="13"/>
     <package name="api">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="getJobs.js" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\api\getJobs.js">
@@ -53,7 +53,7 @@
       </file>
     </package>
     <package name="store">
-      <metrics statements="36" coveredstatements="33" conditionals="4" coveredconditionals="4" methods="17" coveredmethods="14"/>
+      <metrics statements="36" coveredstatements="36" conditionals="4" coveredconditionals="4" methods="17" coveredmethods="17"/>
       <file name="actions.js" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\store\actions.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="5" count="1" type="stmt"/>
@@ -74,11 +74,11 @@
         <line num="17" count="8" type="stmt"/>
       </file>
       <file name="getters.js" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\store\getters.js">
-        <metrics statements="16" coveredstatements="13" conditionals="4" coveredconditionals="4" methods="11" coveredmethods="8"/>
+        <metrics statements="16" coveredstatements="16" conditionals="4" coveredconditionals="4" methods="11" coveredmethods="11"/>
         <line num="9" count="1" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
         <line num="15" count="2" type="stmt"/>
         <line num="16" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="17" count="1" type="stmt"/>
