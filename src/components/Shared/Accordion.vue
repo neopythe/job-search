@@ -23,13 +23,15 @@ export default {
   name: 'Accordion',
   setup() {
     const header = ref('Cool Title')
+    const isOpen = ref(false)
 
     const open = () => {
-      header.value = 'Awesome Title'
+      isOpen.value = !isOpen.value
     }
 
     return {
       header,
+      isOpen,
       open,
     }
   },
