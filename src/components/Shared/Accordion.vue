@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 export default {
   name: 'Accordion',
@@ -29,7 +29,12 @@ export default {
       isOpen.value = !isOpen.value
     }
 
+    const caretIcon = computed(() =>
+      isOpen.value ? ['fas', 'angle-up'] : ['fas', 'angle-down']
+    )
+
     return {
+      caretIcon,
       header,
       isOpen,
       open,
