@@ -17,12 +17,20 @@
 </template>
 
 <script>
+import { ref } from 'vue'
+
 export default {
   name: 'Accordion',
   setup() {
-    const header = 'Cool Title'
+    const header = ref('Cool Title')
+
+    const open = () => {
+      header.value = 'Awesome Title'
+    }
+
     return {
       header,
+      open,
     }
   },
   // props: {
