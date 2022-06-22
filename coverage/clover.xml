@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1655854101324" clover="3.2.0">
-  <project timestamp="1655854101325" name="All files">
-    <metrics statements="58" coveredstatements="58" conditionals="6" coveredconditionals="6" methods="26" coveredmethods="26" elements="90" coveredelements="90" complexity="0" loc="58" ncloc="58" packages="6" files="13" classes="13"/>
+<coverage generated="1655891988801" clover="3.2.0">
+  <project timestamp="1655891988801" name="All files">
+    <metrics statements="54" coveredstatements="54" conditionals="4" coveredconditionals="4" methods="23" coveredmethods="23" elements="81" coveredelements="81" complexity="0" loc="54" ncloc="54" packages="6" files="12" classes="12"/>
     <package name="api">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="getJobs.js" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\api\getJobs.js">
@@ -29,14 +29,7 @@
       </file>
     </package>
     <package name="components.Shared">
-      <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
-      <file name="Accordion.vue" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\components\Shared\Accordion.vue">
-        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
-        <line num="20" count="3" type="stmt"/>
-        <line num="29" count="6" type="stmt"/>
-        <line num="35" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="40" count="6" type="stmt"/>
-      </file>
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="ActionButton.vue" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\components\Shared\ActionButton.vue">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="8" count="3" type="stmt"/>

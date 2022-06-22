@@ -5,6 +5,8 @@
 </template>
 
 <script>
+// import { computed, toRefs } from 'vue'
+
 export default {
   name: 'ActionButton',
   props: {
@@ -21,6 +23,17 @@ export default {
       },
     },
   },
+  // setup(props) {
+  //   const { type } = toRef(props)
+
+  //   const buttonClass = computed(() => {
+  //     return {
+  //       [type.value]: true,
+  //     }
+  //   })
+
+  //   return { buttonClass }
+  // },
 }
 </script>
 
