@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1655942416153" clover="3.2.0">
-  <project timestamp="1655942416153" name="All files">
+<coverage generated="1655947904802" clover="3.2.0">
+  <project timestamp="1655947904802" name="All files">
     <metrics statements="57" coveredstatements="57" conditionals="4" coveredconditionals="4" methods="25" coveredmethods="25" elements="86" coveredelements="86" complexity="0" loc="57" ncloc="57" packages="7" files="13" classes="13"/>
     <package name="api">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -49,9 +49,9 @@
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="useConfirmRoute.js" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\composables\useConfirmRoute.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
       </file>
     </package>
     <package name="store">
