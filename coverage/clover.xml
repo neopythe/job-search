@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1655895178528" clover="3.2.0">
-  <project timestamp="1655895178528" name="All files">
-    <metrics statements="54" coveredstatements="54" conditionals="4" coveredconditionals="4" methods="23" coveredmethods="23" elements="81" coveredelements="81" complexity="0" loc="54" ncloc="54" packages="6" files="12" classes="12"/>
+<coverage generated="1655942416153" clover="3.2.0">
+  <project timestamp="1655942416153" name="All files">
+    <metrics statements="57" coveredstatements="57" conditionals="4" coveredconditionals="4" methods="25" coveredmethods="25" elements="86" coveredelements="86" complexity="0" loc="57" ncloc="57" packages="7" files="13" classes="13"/>
     <package name="api">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="getJobs.js" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\api\getJobs.js">
@@ -45,6 +45,15 @@
         <line num="28" count="5" type="stmt"/>
       </file>
     </package>
+    <package name="composables">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="useConfirmRoute.js" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\composables\useConfirmRoute.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+      </file>
+    </package>
     <package name="store">
       <metrics statements="36" coveredstatements="36" conditionals="4" coveredconditionals="4" methods="17" coveredmethods="17"/>
       <file name="actions.js" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\store\actions.js">
@@ -55,16 +64,16 @@
       </file>
       <file name="constants.js" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\store\constants.js">
         <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="8" type="stmt"/>
-        <line num="5" count="8" type="stmt"/>
-        <line num="6" count="8" type="stmt"/>
-        <line num="7" count="8" type="stmt"/>
-        <line num="10" count="8" type="stmt"/>
-        <line num="11" count="8" type="stmt"/>
-        <line num="12" count="8" type="stmt"/>
-        <line num="15" count="8" type="stmt"/>
-        <line num="16" count="8" type="stmt"/>
-        <line num="17" count="8" type="stmt"/>
+        <line num="2" count="7" type="stmt"/>
+        <line num="5" count="7" type="stmt"/>
+        <line num="6" count="7" type="stmt"/>
+        <line num="7" count="7" type="stmt"/>
+        <line num="10" count="7" type="stmt"/>
+        <line num="11" count="7" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="17" count="7" type="stmt"/>
       </file>
       <file name="getters.js" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\store\getters.js">
         <metrics statements="16" coveredstatements="16" conditionals="4" coveredconditionals="4" methods="11" coveredmethods="11"/>
