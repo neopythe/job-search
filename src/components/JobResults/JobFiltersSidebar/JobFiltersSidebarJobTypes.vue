@@ -27,7 +27,8 @@
 
 <script>
 import { ref } from 'vue'
-import { mapMutations } from 'vuex'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
 import { useUniqueJobTypes } from '@/store/composables'
 import { ADD_SELECTED_JOB_TYPES } from '@/store/constants'
@@ -40,16 +41,18 @@ export default {
     Accordion,
   },
   setup() {
+    const store = useStore()
+    const router = useRouter()
+
     const selectedJobTypes = ref([])
     const uniqueJobTypes = useUniqueJobTypes()
-    return { selectedJobTypes, uniqueJobTypes }
-  },
-  methods: {
-    ...mapMutations([ADD_SELECTED_JOB_TYPES]),
-    selectJobType() {
-      this.ADD_SELECTED_JOB_TYPES(this.selectedJobTypes)
-      this.$router.push({ name: 'JobResults' })
-    },
+
+    const selectJobType = () => {
+      store.commit(ADD_SELECTED_JOB_TYPES, selectedJobTypes.value)
+      router.push({ name: 'JobResults' })
+    }
+
+    return { selectJobType, selectedJobTypes, uniqueJobTypes }
   },
 }
 </script>
