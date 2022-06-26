@@ -36,7 +36,8 @@
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
 
-import { FETCH_JOBS, FILTERED_JOBS } from '@/store/constants'
+import { useFilteredJobs } from '@/store/composables'
+import { FETCH_JOBS } from '@/store/constants'
 
 import JobListing from '@/components/JobResults/JobListing.vue'
 
@@ -47,15 +48,14 @@ export default {
   },
   setup() {
     const store = useStore()
-
     const fetchJobs = () => {
       store.dispatch(FETCH_JOBS)
     }
-
     onMounted(fetchJobs)
+
+    const filteredJobs = useFilteredJobs()
   },
   // computed: {
-  //   ...mapGetters([FILTERED_JOBS]),
   //   currentPage() {
   //     return +this.$route.query.page || 1
   //   },
