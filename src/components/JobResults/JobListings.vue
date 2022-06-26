@@ -33,8 +33,9 @@
 </template>
 
 <script>
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
+import { useRoute } from 'vue-router'
 
 import { useFilteredJobs } from '@/store/composables'
 import { FETCH_JOBS } from '@/store/constants'
@@ -54,24 +55,27 @@ export default {
     onMounted(fetchJobs)
 
     const filteredJobs = useFilteredJobs()
+
+    const route = useRoute()
+    const currentPage = computed(() => +route.query.page || 1)
+
+    const previousPage = computed(() => {
+      const previousPage = currentPage.value - 1
+      return previousPage >= 1 ? previousPage : null
+    })
+
+    const nextPage = computed(() => {
+      const nextPage = currentPage.value + 1
+      const maxPage = Math.ceil(filteredJobs.value.length / 10)
+      return nextPage <= maxPage ? nextPage : null
+    })
+
+    const displayedJobs = computed(() => {
+      const indices = [(currentPage.value - 1) * 10, currentPage.value * 10]
+      return filteredJobs.value.slice(...indices)
+    })
+
+    return { currentPage, displayedJobs, nextPage, previousPage }
   },
-  // computed: {
-  //   currentPage() {
-  //     return +this.$route.query.page || 1
-  //   },
-  //   previousPage() {
-  //     const previousPage = this.currentPage - 1
-  //     return previousPage >= 1 ? previousPage : null
-  //   },
-  //   nextPage() {
-  //     const nextPage = this.currentPage + 1
-  //     const maxPage = Math.ceil(this.FILTERED_JOBS.length / 10)
-  //     return nextPage <= maxPage ? nextPage : null
-  //   },
-  //   displayedJobs() {
-  //     const indices = [(this.currentPage - 1) * 10, this.currentPage * 10]
-  //     return this.FILTERED_JOBS.slice(...indices)
-  //   },
-  // },
 }
 </script>
