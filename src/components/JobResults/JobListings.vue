@@ -33,7 +33,8 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { onMounted } from 'vue'
+import { useStore } from 'vuex'
 
 import { FETCH_JOBS, FILTERED_JOBS } from '@/store/constants'
 
@@ -44,30 +45,33 @@ export default {
   components: {
     JobListing,
   },
-  computed: {
-    ...mapGetters([FILTERED_JOBS]),
-    currentPage() {
-      return +this.$route.query.page || 1
-    },
-    previousPage() {
-      const previousPage = this.currentPage - 1
-      return previousPage >= 1 ? previousPage : null
-    },
-    nextPage() {
-      const nextPage = this.currentPage + 1
-      const maxPage = Math.ceil(this.FILTERED_JOBS.length / 10)
-      return nextPage <= maxPage ? nextPage : null
-    },
-    displayedJobs() {
-      const indices = [(this.currentPage - 1) * 10, this.currentPage * 10]
-      return this.FILTERED_JOBS.slice(...indices)
-    },
+  setup() {
+    const store = useStore()
+
+    const fetchJobs = () => {
+      store.dispatch(FETCH_JOBS)
+    }
+
+    onMounted(fetchJobs)
   },
-  async mounted() {
-    this.FETCH_JOBS()
-  },
-  methods: {
-    ...mapActions([FETCH_JOBS]),
-  },
+  // computed: {
+  //   ...mapGetters([FILTERED_JOBS]),
+  //   currentPage() {
+  //     return +this.$route.query.page || 1
+  //   },
+  //   previousPage() {
+  //     const previousPage = this.currentPage - 1
+  //     return previousPage >= 1 ? previousPage : null
+  //   },
+  //   nextPage() {
+  //     const nextPage = this.currentPage + 1
+  //     const maxPage = Math.ceil(this.FILTERED_JOBS.length / 10)
+  //     return nextPage <= maxPage ? nextPage : null
+  //   },
+  //   displayedJobs() {
+  //     const indices = [(this.currentPage - 1) * 10, this.currentPage * 10]
+  //     return this.FILTERED_JOBS.slice(...indices)
+  //   },
+  // },
 }
 </script>
