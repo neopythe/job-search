@@ -40,6 +40,7 @@ import { useFilteredJobs } from '@/store/composables'
 import { FETCH_JOBS } from '@/store/constants'
 
 import useCurrentPage from '@/composables/useCurrentPage'
+import usePreviousAndNextPages from '@/composables/usePreviousAndNextPages'
 
 import JobListing from '@/components/JobResults/JobListing.vue'
 
@@ -59,16 +60,12 @@ export default {
 
     const currentPage = useCurrentPage()
 
-    const previousPage = computed(() => {
-      const previousPage = currentPage.value - 1
-      return previousPage >= 1 ? previousPage : null
-    })
+    const maxPage = computed(() => Math.ceil(filteredJobs.value.length / 10))
 
-    const nextPage = computed(() => {
-      const nextPage = currentPage.value + 1
-      const maxPage = Math.ceil(filteredJobs.value.length / 10)
-      return nextPage <= maxPage ? nextPage : null
-    })
+    const { previousPage, nextPage } = usePreviousAndNextPages(
+      currentPage,
+      maxPage
+    )
 
     const displayedJobs = computed(() => {
       const indices = [(currentPage.value - 1) * 10, currentPage.value * 10]
