@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1656293716474" clover="3.2.0">
-  <project timestamp="1656293716474" name="All files">
-    <metrics statements="80" coveredstatements="80" conditionals="10" coveredconditionals="10" methods="37" coveredmethods="37" elements="127" coveredelements="127" complexity="0" loc="80" ncloc="80" packages="7" files="16" classes="16"/>
+<coverage generated="1656295324542" clover="3.2.0">
+  <project timestamp="1656295324542" name="All files">
+    <metrics statements="78" coveredstatements="78" conditionals="10" coveredconditionals="10" methods="36" coveredmethods="36" elements="124" coveredelements="124" complexity="0" loc="78" ncloc="78" packages="6" files="15" classes="15"/>
     <package name="api">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="getJobs.js" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\api\getJobs.js">
@@ -10,14 +10,6 @@
         <line num="4" count="2" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
-      </file>
-    </package>
-    <package name="components.JobResults">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="JobListing.vue" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\components\JobResults\JobListing.vue">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="57" count="2" type="stmt"/>
-        <line num="67" count="5" type="stmt"/>
       </file>
     </package>
     <package name="components.Navigation">
