@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1656295324542" clover="3.2.0">
-  <project timestamp="1656295324542" name="All files">
-    <metrics statements="78" coveredstatements="78" conditionals="10" coveredconditionals="10" methods="36" coveredmethods="36" elements="124" coveredelements="124" complexity="0" loc="78" ncloc="78" packages="6" files="15" classes="15"/>
+<coverage generated="1656327417691" clover="3.2.0">
+  <project timestamp="1656327417691" name="All files">
+    <metrics statements="79" coveredstatements="79" conditionals="10" coveredconditionals="10" methods="36" coveredmethods="36" elements="125" coveredelements="125" complexity="0" loc="79" ncloc="79" packages="6" files="15" classes="15"/>
     <package name="api">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="getJobs.js" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\api\getJobs.js">
@@ -64,7 +64,7 @@
       </file>
     </package>
     <package name="store">
-      <metrics statements="48" coveredstatements="48" conditionals="4" coveredconditionals="4" methods="24" coveredmethods="24"/>
+      <metrics statements="49" coveredstatements="49" conditionals="4" coveredconditionals="4" methods="24" coveredmethods="24"/>
       <file name="actions.js" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\store\actions.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="5" count="1" type="stmt"/>
@@ -126,10 +126,11 @@
         <line num="16" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
       </file>
-      <file name="state.js" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\store\state.js">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="4" type="stmt"/>
+      <file name="state.ts" path="C:\Users\User\Desktop\Development\Courses\vue-masterclass\job-search\src\store\state.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
       </file>
     </package>
     <package name="utils">
