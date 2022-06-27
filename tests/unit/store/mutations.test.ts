@@ -7,6 +7,7 @@ describe('mutations', () => {
     it('updates job types that the user has chosen to filter jobs by', () => {
       const state = createState({ selectedJobTypes: [] })
       mutations.ADD_SELECTED_JOB_TYPES(state, ['Full-time', 'Part-time'])
+
       expect(state.selectedJobTypes).toEqual(['Full-time', 'Part-time'])
     })
   })
@@ -15,6 +16,7 @@ describe('mutations', () => {
     it('updates organizations that the user has chosen to filter jobs by', () => {
       const state = createState({ selectedOrganizations: [] })
       mutations.ADD_SELECTED_ORGANIZATIONS(state, ['Org 1', 'Org 2'])
+
       expect(state.selectedOrganizations).toEqual(['Org 1', 'Org 2'])
     })
   })
@@ -23,6 +25,7 @@ describe('mutations', () => {
     it('logs the user in', () => {
       const state = createState({ isLoggedIn: false })
       mutations.LOGIN_USER(state)
+
       expect(state.isLoggedIn).toBe(true)
     })
   })
@@ -33,6 +36,7 @@ describe('mutations', () => {
       const jobOne = createJob()
       const jobTwo = createJob()
       mutations.RECEIVE_JOBS(state, [jobOne, jobTwo])
+
       expect(state.jobs).toEqual([jobOne, jobTwo])
     })
   })
