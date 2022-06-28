@@ -19,11 +19,13 @@ describe('getJobs', () => {
 
   it('fetches jobs that candidates can apply to', async () => {
     await getJobs()
+
     expect(axios.get).toHaveBeenCalledWith('http://myfakeapi.com/jobs')
   })
 
   it('extracts jobs from response', async () => {
     const data = await getJobs()
+
     expect(data).toEqual([
       {
         id: 1,
