@@ -1,6 +1,6 @@
 import mutations from '@/store/mutations'
 
-import { createJob, createState } from './utils'
+import { createDegree, createJob, createState } from './utils'
 
 describe('mutations', () => {
   describe('ADD_SELECTED_JOB_TYPES', () => {
@@ -27,6 +27,16 @@ describe('mutations', () => {
       mutations.LOGIN_USER(state)
 
       expect(state.isLoggedIn).toBe(true)
+    })
+  })
+
+  describe('RECEIVE_DEGREES', () => {
+    it('receives degrees from API response', () => {
+      const state = createState({ degrees: [] })
+      const degree = createDegree()
+      mutations.RECEIVE_DEGREES(state, [degree])
+
+      expect(state.degrees).toEqual([degree])
     })
   })
 

@@ -1,6 +1,10 @@
 // user
 export const LOGIN_USER = 'LOGIN_USER'
 
+// degrees
+
+export const RECEIVE_DEGREES = 'RECEIVE_DEGREES'
+
 // jobs
 export const FETCH_JOBS = 'FETCH_JOBS'
 export const FILTERED_JOBS = 'FILTERED_JOBS'
