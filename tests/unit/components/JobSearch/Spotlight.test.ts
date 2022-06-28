@@ -4,9 +4,11 @@ jest.mock('axios')
 
 import Spotlight from '@/components/JobSearch/Spotlight.vue'
 
+const axiosGetMock = axios.get as jest.Mock
+
 describe('Spotlight', () => {
   const mockSpotlightResponse = (data = {}) => {
-    axios.get.mockResolvedValue({
+    axiosGetMock.mockResolvedValue({
       data: [
         {
           img: 'Some image',
@@ -30,6 +32,7 @@ describe('Spotlight', () => {
       },
     })
     await flushPromises()
+
     expect(wrapper.text()).toMatch('Some image')
   })
 
@@ -45,6 +48,7 @@ describe('Spotlight', () => {
       },
     })
     await flushPromises()
+
     expect(wrapper.text()).toMatch('Some title')
   })
 
@@ -60,6 +64,7 @@ describe('Spotlight', () => {
       },
     })
     await flushPromises()
+
     expect(wrapper.text()).toMatch('Some description')
   })
 })
