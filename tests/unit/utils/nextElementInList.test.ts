@@ -4,7 +4,7 @@ describe('nextElementInList', () => {
   it('locates element in list and returns the next element in list', () => {
     const list = ['a', 'b', 'c', 'd', 'e']
     const value = 'c'
-    const result = nextElementInList(list, value)
+    const result = nextElementInList<string>(list, value)
     expect(result).toBe('d')
   })
 
@@ -12,7 +12,7 @@ describe('nextElementInList', () => {
     it('locates next element at start of the list', () => {
       const list = ['a', 'b', 'c', 'd', 'e']
       const value = 'e'
-      const result = nextElementInList(list, value)
+      const result = nextElementInList<string>(list, value)
       expect(result).toBe('a')
     })
   })
