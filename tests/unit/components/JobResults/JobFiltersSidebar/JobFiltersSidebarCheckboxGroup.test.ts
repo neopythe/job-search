@@ -1,9 +1,11 @@
 import { mount } from '@vue/test-utils'
 import { useStore } from 'vuex'
 jest.mock('vuex')
+const useStoreMock = useStore as jest.Mock
 
 import { useRouter } from 'vue-router'
 jest.mock('vue-router')
+const useRouterMock = useRouter as jest.Mock
 
 import JobFiltersSidebarCheckboxGroup from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarCheckboxGroup.vue'
 
@@ -38,8 +40,8 @@ describe('JobFiltersSidebarCheckboxGroup', () => {
   describe('when user clicks checkbox', () => {
     it('communicates that user has selected checkbox for value', async () => {
       const commit = jest.fn()
-      useStore.mockReturnValue({ commit })
-      useRouter.mockReturnValue({ push: jest.fn() })
+      useStoreMock.mockReturnValue({ commit })
+      useRouterMock.mockReturnValue({ push: jest.fn() })
       const props = {
         mutation: 'SOME_MUTATION',
         uniqueValues: new Set(['Full-time']),
@@ -48,15 +50,15 @@ describe('JobFiltersSidebarCheckboxGroup', () => {
       const clickableArea = wrapper.find('[data-test="clickable-area"]')
       await clickableArea.trigger('click')
       const fullTimeInput = wrapper.find('[data-test="Full-time"]')
-      await fullTimeInput.setChecked()
+      await fullTimeInput.setValue(true)
 
       expect(commit).toHaveBeenCalledWith('SOME_MUTATION', ['Full-time'])
     })
 
     it('navigates user to job results page to see fresh batch of filtered jobs', async () => {
-      useStore.mockReturnValue({ commit: jest.fn() })
+      useStoreMock.mockReturnValue({ commit: jest.fn() })
       const push = jest.fn()
-      useRouter.mockReturnValue({ push })
+      useRouterMock.mockReturnValue({ push })
       const props = {
         uniqueValues: new Set(['Full-time']),
       }
@@ -64,7 +66,7 @@ describe('JobFiltersSidebarCheckboxGroup', () => {
       const clickableArea = wrapper.find('[data-test="clickable-area"]')
       await clickableArea.trigger('click')
       const fullTimeInput = wrapper.find('[data-test="Full-time"]')
-      await fullTimeInput.setChecked()
+      await fullTimeInput.setValue(true)
 
       expect(push).toHaveBeenCalledWith({ name: 'JobResults' })
     })
