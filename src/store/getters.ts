@@ -15,11 +15,13 @@ const getters = {
   [FILTERED_JOBS](
     state: GlobalState,
     getters: {
+      INCLUDE_JOB_BY_DEGREE: (job: Job) => boolean
       INCLUDE_JOB_BY_JOB_TYPE: (job: Job) => boolean
       INCLUDE_JOB_BY_ORGANIZATION: (job: Job) => boolean
     }
   ) {
     return state.jobs
+      .filter(job => getters.INCLUDE_JOB_BY_DEGREE(job))
       .filter(job => getters.INCLUDE_JOB_BY_JOB_TYPE(job))
       .filter(job => getters.INCLUDE_JOB_BY_ORGANIZATION(job))
   },

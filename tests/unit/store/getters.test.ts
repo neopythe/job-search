@@ -4,10 +4,12 @@ import { createDegree, createJob, createState } from './utils'
 
 describe('getters', () => {
   describe('FILTERED_JOBS', () => {
-    it('filters jobs by organization and job type', () => {
+    it('filters jobs by degree, job type, and organization', () => {
+      const INCLUDE_JOB_BY_DEGREE = jest.fn().mockReturnValue(true)
       const INCLUDE_JOB_BY_JOB_TYPE = jest.fn().mockReturnValue(true)
       const INCLUDE_JOB_BY_ORGANIZATION = jest.fn().mockReturnValue(true)
       const mockGetters = {
+        INCLUDE_JOB_BY_DEGREE,
         INCLUDE_JOB_BY_JOB_TYPE,
         INCLUDE_JOB_BY_ORGANIZATION,
       }
@@ -20,6 +22,7 @@ describe('getters', () => {
       const result = getters.FILTERED_JOBS(state, mockGetters)
 
       expect(result).toEqual([job])
+      expect(INCLUDE_JOB_BY_DEGREE).toHaveBeenCalledWith(job)
       expect(INCLUDE_JOB_BY_JOB_TYPE).toHaveBeenCalledWith(job)
       expect(INCLUDE_JOB_BY_ORGANIZATION).toHaveBeenCalledWith(job)
     })
