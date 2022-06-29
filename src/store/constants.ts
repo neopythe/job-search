@@ -5,6 +5,7 @@ export const LOGIN_USER = 'LOGIN_USER'
 // degrees
 
 export const FETCH_DEGREES = 'FETCH_DEGREES'
+export const INCLUDE_JOB_BY_DEGREE = 'INCLUDE_JOB_BY_DEGREE'
 export const RECEIVE_DEGREES = 'RECEIVE_DEGREES'
 export const UNIQUE_DEGREES = 'UNIQUE_DEGREES'
 

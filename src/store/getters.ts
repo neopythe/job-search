@@ -1,5 +1,6 @@
 import {
   FILTERED_JOBS,
+  INCLUDE_JOB_BY_DEGREE,
   INCLUDE_JOB_BY_JOB_TYPE,
   INCLUDE_JOB_BY_ORGANIZATION,
   UNIQUE_DEGREES,
@@ -21,6 +22,10 @@ const getters = {
     return state.jobs
       .filter(job => getters.INCLUDE_JOB_BY_JOB_TYPE(job))
       .filter(job => getters.INCLUDE_JOB_BY_ORGANIZATION(job))
+  },
+  [INCLUDE_JOB_BY_DEGREE]: (state: GlobalState) => (job: Job) => {
+    if (state.selectedDegrees.length === 0) return true
+    return state.selectedDegrees.includes(job.degree)
   },
   [INCLUDE_JOB_BY_JOB_TYPE]: (state: GlobalState) => (job: Job) => {
     if (state.selectedJobTypes.length === 0) return true
