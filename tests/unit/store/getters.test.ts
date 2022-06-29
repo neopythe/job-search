@@ -1,6 +1,6 @@
 import getters from '@/store/getters'
 
-import { createJob, createState } from './utils'
+import { createDegree, createJob, createState } from './utils'
 
 describe('getters', () => {
   describe('FILTERED_JOBS', () => {
@@ -70,6 +70,19 @@ describe('getters', () => {
 
         expect(includeJob).toBe(true)
       })
+    })
+  })
+
+  describe('UNIQUE_DEGREES', () => {
+    it('extracts unique degree values', () => {
+      const degrees = [
+        createDegree({ degree: "Master's" }),
+        createDegree({ degree: "Bachelor's" }),
+      ]
+      const state = createState({ degrees })
+      const result = getters.UNIQUE_DEGREES(state)
+
+      expect(result).toEqual(["Master's", "Bachelor's"])
     })
   })
 
