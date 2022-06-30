@@ -4,6 +4,7 @@ jest.mock('vuex')
 import {
   useFetchJobsDispatch,
   useFilteredJobs,
+  useUniqueDegrees,
   useUniqueJobTypes,
   useUniqueOrganizations,
 } from '@/store/composables'
@@ -33,6 +34,19 @@ describe('composables', () => {
       const result = useFilteredJobs()
 
       expect(result.value).toEqual([{ id: 1 }])
+    })
+  })
+
+  describe('useUniqueDegrees', () => {
+    it('retrieves unique degrees from store', () => {
+      useStoreMock.mockReturnValue({
+        getters: {
+          UNIQUE_DEGREES: ['Ph.D.'],
+        },
+      })
+      const result = useUniqueDegrees()
+
+      expect(result.value).toEqual(['Ph.D.'])
     })
   })
 

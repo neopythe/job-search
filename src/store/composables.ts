@@ -4,6 +4,7 @@ import { useStore } from 'vuex'
 import {
   FETCH_JOBS,
   FILTERED_JOBS,
+  UNIQUE_DEGREES,
   UNIQUE_JOB_TYPES,
   UNIQUE_ORGANIZATIONS,
 } from '@/store/constants'
@@ -17,6 +18,11 @@ import { key } from '@/store'
 export const useFilteredJobs = () => {
   const store = useStore(key)
   return computed<Job[]>(() => store.getters[FILTERED_JOBS])
+}
+
+export const useUniqueDegrees = () => {
+  const store = useStore(key)
+  return computed<string[]>(() => store.getters[UNIQUE_DEGREES])
 }
 
 export const useUniqueJobTypes = () => {
