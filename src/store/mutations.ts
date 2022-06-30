@@ -1,4 +1,5 @@
 import {
+  ADD_SELECTED_DEGREES,
   ADD_SELECTED_JOB_TYPES,
   ADD_SELECTED_ORGANIZATIONS,
   LOGIN_USER,
@@ -10,6 +11,9 @@ import { GlobalState } from '@/store/types'
 import { Degree, Job } from '@/api/types'
 
 const mutations = {
+  [ADD_SELECTED_DEGREES](state: GlobalState, degrees: string[]) {
+    state.selectedDegrees = degrees
+  },
   [ADD_SELECTED_JOB_TYPES](state: GlobalState, jobTypes: string[]) {
     state.selectedJobTypes = jobTypes
   },
