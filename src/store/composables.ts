@@ -2,6 +2,7 @@ import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 import {
+  FETCH_DEGREES,
   FETCH_JOBS,
   FILTERED_JOBS,
   UNIQUE_DEGREES,
@@ -36,6 +37,11 @@ export const useUniqueOrganizations = () => {
 }
 
 // actions
+
+export const useFetchDegreesDispatch = () => {
+  const store = useStore(key)
+  store.dispatch(FETCH_DEGREES)
+}
 
 export const useFetchJobsDispatch = () => {
   const store = useStore(key)
