@@ -30,6 +30,21 @@ describe('mutations', () => {
     })
   })
 
+  describe('CLEAR_USER_JOB_FILTER_SELECTIONS', () => {
+    it('removes all job filters that the user has chosen', () => {
+      const state = createState({
+        selectedDegrees: ['Associate'],
+        selectedJobTypes: ['Full-time'],
+        selectedOrganizations: ['Javazon'],
+      })
+      mutations.CLEAR_USER_JOB_FILTER_SELECTIONS(state)
+
+      expect(state.selectedDegrees).toEqual([])
+      expect(state.selectedJobTypes).toEqual([])
+      expect(state.selectedOrganizations).toEqual([])
+    })
+  })
+
   describe('LOGIN_USER', () => {
     it('logs the user in', () => {
       const state = createState({ isLoggedIn: false })

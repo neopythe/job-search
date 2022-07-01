@@ -2,6 +2,7 @@ import {
   ADD_SELECTED_DEGREES,
   ADD_SELECTED_JOB_TYPES,
   ADD_SELECTED_ORGANIZATIONS,
+  CLEAR_USER_JOB_FILTER_SELECTIONS,
   LOGIN_USER,
   RECEIVE_DEGREES,
   RECEIVE_JOBS,
@@ -19,6 +20,11 @@ const mutations = {
   },
   [ADD_SELECTED_ORGANIZATIONS](state: GlobalState, organizations: string[]) {
     state.selectedOrganizations = organizations
+  },
+  [CLEAR_USER_JOB_FILTER_SELECTIONS](state: GlobalState) {
+    state.selectedDegrees = []
+    state.selectedJobTypes = []
+    state.selectedOrganizations = []
   },
   [LOGIN_USER](state: GlobalState) {
     state.isLoggedIn = true
