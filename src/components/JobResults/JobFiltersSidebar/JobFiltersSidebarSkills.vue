@@ -5,6 +5,7 @@
       type="text"
       placeholder="Computer programming, Finance degree"
       class="p-3 h-12 border border-solid border-brand-gray-1 shadow-gray rounded w-full text-base focus:outline-none"
+      data-test="skills-search-input"
     />
   </div>
 </template>
