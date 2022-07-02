@@ -5,6 +5,7 @@
       <ActionButton
         text="Clear filters"
         type="sidebar"
+        data-test="clear-user-job-filters"
         @click="clearUserJobFilterSelections"
       />
     </div>
