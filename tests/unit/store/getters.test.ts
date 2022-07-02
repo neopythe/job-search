@@ -39,16 +39,16 @@ describe('getters', () => {
 
         expect(includeJob).toBe(true)
       })
+    })
 
-      it('identifies whether job is associated with given degrees', () => {
-        const state = createState({
-          selectedDegrees: ["Bachelor's", 'Associate'],
-        })
-        const job = createJob({ degree: 'Associate' })
-        const includeJob = getters.INCLUDE_JOB_BY_DEGREE(state)(job)
-
-        expect(includeJob).toBe(true)
+    it('identifies whether job is associated with given degrees', () => {
+      const state = createState({
+        selectedDegrees: ["Bachelor's", 'Associate'],
       })
+      const job = createJob({ degree: 'Associate' })
+      const includeJob = getters.INCLUDE_JOB_BY_DEGREE(state)(job)
+
+      expect(includeJob).toBe(true)
     })
   })
 
@@ -63,16 +63,16 @@ describe('getters', () => {
 
         expect(includeJob).toBe(true)
       })
+    })
 
-      it('identifies whether job is associated with given job types', () => {
-        const state = createState({
-          selectedJobTypes: ['Full-time', 'Part-time'],
-        })
-        const job = createJob({ jobType: 'Part-time' })
-        const includeJob = getters.INCLUDE_JOB_BY_JOB_TYPE(state)(job)
-
-        expect(includeJob).toBe(true)
+    it('identifies whether job is associated with given job types', () => {
+      const state = createState({
+        selectedJobTypes: ['Full-time', 'Part-time'],
       })
+      const job = createJob({ jobType: 'Part-time' })
+      const includeJob = getters.INCLUDE_JOB_BY_JOB_TYPE(state)(job)
+
+      expect(includeJob).toBe(true)
     })
   })
 
@@ -87,22 +87,40 @@ describe('getters', () => {
 
         expect(includeJob).toBe(true)
       })
+    })
 
-      it('identifies whether job is associated with given organizations', () => {
-        const state = createState({
-          selectedOrganizations: ['Gaggle', 'MikeRoweSoft'],
-        })
-        const job = createJob({ organization: 'Gaggle' })
-        const includeJob = getters.INCLUDE_JOB_BY_ORGANIZATION(state)(job)
-
-        expect(includeJob).toBe(true)
+    it('identifies whether job is associated with given organizations', () => {
+      const state = createState({
+        selectedOrganizations: ['Gaggle', 'MikeRoweSoft'],
       })
+      const job = createJob({ organization: 'Gaggle' })
+      const includeJob = getters.INCLUDE_JOB_BY_ORGANIZATION(state)(job)
+
+      expect(includeJob).toBe(true)
     })
   })
 
   describe('INCLUDE_JOB_BY_SKILL', () => {
+    describe('when the user has not entered any skill', () => {
+      it('includes job', () => {
+        const state = createState({ skillsSearchTerm: '' })
+        const job = createJob({ title: 'Vue Developer' })
+        const includeJob = getters.INCLUDE_JOB_BY_SKILL(state)(job)
+
+        expect(includeJob).toBe(true)
+      })
+    })
+
     it("identifies whether job matches user's skill", () => {
       const state = createState({ skillsSearchTerm: 'Vue' })
+      const job = createJob({ title: 'Vue Developer' })
+      const includeJob = getters.INCLUDE_JOB_BY_SKILL(state)(job)
+
+      expect(includeJob).toBe(true)
+    })
+
+    it('handles inconsistent character casing', () => {
+      const state = createState({ skillsSearchTerm: 'vuE' })
       const job = createJob({ title: 'Vue Developer' })
       const includeJob = getters.INCLUDE_JOB_BY_SKILL(state)(job)
 

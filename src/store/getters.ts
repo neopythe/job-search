@@ -39,7 +39,9 @@ const getters = {
     return state.selectedOrganizations.includes(job.organization)
   },
   [INCLUDE_JOB_BY_SKILL]: (state: GlobalState) => (job: Job) => {
-    return job.title.includes(state.skillsSearchTerm)
+    return job.title
+      .toLowerCase()
+      .includes(state.skillsSearchTerm.toLowerCase())
   },
   [UNIQUE_DEGREES](state: GlobalState) {
     return state.degrees.map(degree => degree.degree)
