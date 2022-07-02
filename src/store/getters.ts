@@ -3,6 +3,7 @@ import {
   INCLUDE_JOB_BY_DEGREE,
   INCLUDE_JOB_BY_JOB_TYPE,
   INCLUDE_JOB_BY_ORGANIZATION,
+  INCLUDE_JOB_BY_SKILL,
   UNIQUE_DEGREES,
   UNIQUE_JOB_TYPES,
   UNIQUE_ORGANIZATIONS,
@@ -36,6 +37,9 @@ const getters = {
   [INCLUDE_JOB_BY_ORGANIZATION]: (state: GlobalState) => (job: Job) => {
     if (state.selectedOrganizations.length === 0) return true
     return state.selectedOrganizations.includes(job.organization)
+  },
+  [INCLUDE_JOB_BY_SKILL]: (state: GlobalState) => (job: Job) => {
+    return job.title.includes(state.skillsSearchTerm)
   },
   [UNIQUE_DEGREES](state: GlobalState) {
     return state.degrees.map(degree => degree.degree)
