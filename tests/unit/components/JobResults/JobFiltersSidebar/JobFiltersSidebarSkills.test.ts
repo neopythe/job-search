@@ -38,4 +38,22 @@ describe('JobFiltersSidebarSkills', () => {
       'Vue Developer'
     )
   })
+
+  it('removes whitespace from user input', async () => {
+    const commit = jest.fn()
+    useStoreMock.mockReturnValue({
+      state: {
+        skillsSearchTerm: '',
+      },
+      commit,
+    })
+    const wrapper = shallowMount(JobFiltersSidebarSkills)
+    const skillsSearchInput = wrapper.find('[data-test="skills-search-input"]')
+    await skillsSearchInput.setValue('  Vue Developer  ')
+
+    expect(commit).toHaveBeenCalledWith(
+      'UPDATE_SKILLS_SEARCH_TERM',
+      'Vue Developer'
+    )
+  })
 })
