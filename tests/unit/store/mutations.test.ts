@@ -74,4 +74,13 @@ describe('mutations', () => {
       expect(state.jobs).toEqual([jobOne, jobTwo])
     })
   })
+
+  describe('UPDATE_SKILLS_SEARCH_TERM', () => {
+    it("receives search term for user's skills", () => {
+      const state = createState({ skillsSearchTerm: '' })
+      mutations.UPDATE_SKILLS_SEARCH_TERM(state, 'Vue')
+
+      expect(state.skillsSearchTerm).toBe('Vue')
+    })
+  })
 })
