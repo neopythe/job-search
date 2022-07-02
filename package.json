@@ -10,7 +10,7 @@
     "backend": "json-server --watch db.json",
     "test:watch": "vue-cli-service test:unit --watch",
     "postinstall": "npm run build",
-    "start": "node server.js"
+    "start": "node server.ts"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
