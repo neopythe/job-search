@@ -26,6 +26,7 @@ const mutations = {
     state.selectedDegrees = []
     state.selectedJobTypes = []
     state.selectedOrganizations = []
+    state.skillsSearchTerm = ''
   },
   [LOGIN_USER](state: GlobalState) {
     state.isLoggedIn = true

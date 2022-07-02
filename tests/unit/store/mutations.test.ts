@@ -36,12 +36,14 @@ describe('mutations', () => {
         selectedDegrees: ['Associate'],
         selectedJobTypes: ['Full-time'],
         selectedOrganizations: ['Javazon'],
+        skillsSearchTerm: 'Vue',
       })
       mutations.CLEAR_USER_JOB_FILTER_SELECTIONS(state)
 
       expect(state.selectedDegrees).toEqual([])
       expect(state.selectedJobTypes).toEqual([])
       expect(state.selectedOrganizations).toEqual([])
+      expect(state.skillsSearchTerm).toBe('')
     })
   })
 
