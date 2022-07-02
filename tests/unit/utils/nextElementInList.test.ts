@@ -5,6 +5,7 @@ describe('nextElementInList', () => {
     const list = ['a', 'b', 'c', 'd', 'e']
     const value = 'c'
     const result = nextElementInList<string>(list, value)
+
     expect(result).toBe('d')
   })
 
@@ -13,6 +14,7 @@ describe('nextElementInList', () => {
       const list = ['a', 'b', 'c', 'd', 'e']
       const value = 'e'
       const result = nextElementInList<string>(list, value)
+
       expect(result).toBe('a')
     })
   })

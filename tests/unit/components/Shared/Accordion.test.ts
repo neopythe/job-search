@@ -23,9 +23,12 @@ describe('Accordion', () => {
       default: '<h3>My nested child</h3>',
     }
     const wrapper = mount(Accordion, createConfig({ slots }))
+
     expect(wrapper.text()).not.toMatch('My nested child')
+
     const clickableArea = wrapper.find('[data-test="clickable-area"]')
     await clickableArea.trigger('click')
+
     expect(wrapper.text()).toMatch('My nested child')
   })
 
@@ -35,6 +38,7 @@ describe('Accordion', () => {
       const wrapper = mount(Accordion, createConfig({ slots }))
       const clickableArea = wrapper.find('[data-test="clickable-area"]')
       await clickableArea.trigger('click')
+
       expect(wrapper.text()).toMatch('Whoops, somebody forgot to populate me!')
     })
   })

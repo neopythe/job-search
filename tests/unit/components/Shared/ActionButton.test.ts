@@ -10,6 +10,7 @@ describe('ActionButton', () => {
         type: 'primary',
       },
     })
+
     expect(wrapper.text()).toMatch("I'm so clickable")
   })
 
@@ -21,6 +22,7 @@ describe('ActionButton', () => {
       },
     })
     const button = wrapper.find('button')
+
     expect(button.classes('primary')).toBe(true)
   })
 })

@@ -24,6 +24,7 @@ describe('actions', () => {
         commit: jest.fn(),
       }
       await actions.FETCH_DEGREES(context)
+
       expect(getDegrees).toHaveBeenCalled()
     })
 
@@ -31,6 +32,7 @@ describe('actions', () => {
       const commit = jest.fn()
       const context = { commit }
       await actions.FETCH_DEGREES(context)
+
       expect(commit).toHaveBeenCalledWith('RECEIVE_DEGREES', [
         {
           id: 1,
@@ -55,6 +57,7 @@ describe('actions', () => {
         commit: jest.fn(),
       }
       await actions.FETCH_JOBS(context)
+
       expect(getJobs).toHaveBeenCalled()
     })
 
@@ -62,6 +65,7 @@ describe('actions', () => {
       const commit = jest.fn()
       const context = { commit }
       await actions.FETCH_JOBS(context)
+
       expect(commit).toHaveBeenCalledWith('RECEIVE_JOBS', [
         {
           id: 1,

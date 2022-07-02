@@ -14,6 +14,7 @@ describe('JobFiltersSidebarJobTypes', () => {
       name: 'JobFiltersSidebarCheckboxGroup',
     })
     const { mutation, uniqueValues } = jobTypesFilter.props()
+
     expect(mutation).toBe('ADD_SELECTED_JOB_TYPES')
     expect(uniqueValues).toEqual(new Set(['Full-time', 'Part-time']))
   })

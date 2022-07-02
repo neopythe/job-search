@@ -9,6 +9,7 @@ describe('HeaderContainer', () => {
         title: '<h2>Some title</h2>',
       },
     })
+
     expect(wrapper.text()).toMatch('Some title')
   })
 
@@ -18,6 +19,7 @@ describe('HeaderContainer', () => {
         subtitle: '<h3>Some subtitle</h3>',
       },
     })
+
     expect(wrapper.text()).toMatch('Some subtitle')
   })
 })

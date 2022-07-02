@@ -14,6 +14,7 @@ describe('JobFiltersSidebarDegrees', () => {
       name: 'JobFiltersSidebarCheckboxGroup',
     })
     const { mutation, uniqueValues } = degreesFilter.props()
+
     expect(mutation).toBe('ADD_SELECTED_DEGREES')
     expect(uniqueValues).toEqual(['Associate', "Bachelor's"])
   })

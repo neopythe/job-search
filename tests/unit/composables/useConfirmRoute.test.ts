@@ -10,6 +10,7 @@ describe('useConfirmRoute', () => {
     useRouteMock.mockReturnValue({ name: 'Home' })
     const routeName = 'Home'
     const result = useConfirmRoute(routeName)
+
     expect(result.value).toBe(true)
   })
 })

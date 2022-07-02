@@ -26,6 +26,7 @@ describe('SubNav', () => {
       useFilteredJobsMock.mockReturnValue([{ id: 1 }, { id: 2 }])
       const wrapper = mount(SubNav, createConfig())
       const jobCount = wrapper.find('[data-test="job-count"]')
+
       expect(jobCount.text()).toMatch('2 jobs matched')
     })
   })
@@ -36,6 +37,7 @@ describe('SubNav', () => {
       useFilteredJobsMock.mockReturnValue([])
       const wrapper = mount(SubNav, createConfig())
       const jobCount = wrapper.find('[data-test="job-count"]')
+
       expect(jobCount.exists()).toBe(false)
     })
   })

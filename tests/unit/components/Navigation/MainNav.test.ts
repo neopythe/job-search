@@ -30,6 +30,7 @@ describe('MainNav', () => {
   it('displays company name', () => {
     const $store = createStore()
     const wrapper = shallowMount(MainNav, createConfig($store))
+
     expect(wrapper.text()).toMatch('Gaggle Careers')
   })
 
@@ -40,6 +41,7 @@ describe('MainNav', () => {
       '[data-test="main-nav-list-item"]'
     )
     const navigationMenuTexts = navigationMenuItems.map(item => item.text())
+
     expect(navigationMenuTexts).toEqual([
       'Teams',
       'Locations',
@@ -54,6 +56,7 @@ describe('MainNav', () => {
       const $store = createStore({ isLoggedIn: false })
       const wrapper = shallowMount(MainNav, createConfig($store))
       const loginButton = wrapper.find('[data-test="login-button"]')
+
       expect(loginButton.exists()).toBe(true)
     })
 
@@ -61,7 +64,6 @@ describe('MainNav', () => {
       const $store = createStore({ isLoggedIn: false })
       const wrapper = shallowMount(MainNav, createConfig($store))
       const loginButton = wrapper.find('[data-test="login-button"]')
-
       await loginButton.trigger('click')
 
       expect($store.commit).toHaveBeenCalledWith('LOGIN_USER')
@@ -72,16 +74,16 @@ describe('MainNav', () => {
     it('displays user profile picture', () => {
       const $store = createStore({ isLoggedIn: true })
       const wrapper = shallowMount(MainNav, createConfig($store))
-
       const profileImage = wrapper.find('[data-test="profile-image"]')
+
       expect(profileImage.exists()).toBe(true)
     })
 
     it('displays subnavigation menu with additional information', () => {
       const $store = createStore({ isLoggedIn: true })
       const wrapper = shallowMount(MainNav, createConfig($store))
-
       const subNav = wrapper.find('[data-test="subnav"]')
+
       expect(subNav.exists()).toBe(true)
     })
   })

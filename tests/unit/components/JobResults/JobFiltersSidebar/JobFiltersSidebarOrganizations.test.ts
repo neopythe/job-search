@@ -14,6 +14,7 @@ describe('JobFiltersSidebarOrganizations', () => {
       name: 'JobFiltersSidebarCheckboxGroup',
     })
     const { mutation, uniqueValues } = organizationsFilter.props()
+
     expect(mutation).toBe('ADD_SELECTED_ORGANIZATIONS')
     expect(uniqueValues).toEqual(new Set(['Javazon']))
   })
