@@ -4,7 +4,16 @@
       <div
         class="mx-auto flex h-full flex-nowrap border-b border-solid border-brand-gray-1 px-8"
       >
-        <a href="/" class="flex h-full items-center">{{ company }}</a>
+        <a :href="url" class="flex h-full items-center">{{ company }}</a>
+        <nav class="ml-12 h-full">
+          <ul class="flex h-full list-none gap-9">
+            <li v-for="menuItem in menuItems" :key="menuItem" class="h-full">
+              <a href="" class="flex h-full items-center py-2.5">{{
+                menuItem
+              }}</a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </header>
@@ -16,6 +25,8 @@ export default {
   data() {
     return {
       company: "Gaggle Careers",
+      url: "/",
+      menuItems: ["Teams", "Locations", "Benefits", "Jobs", "Students"],
     };
   },
 };
