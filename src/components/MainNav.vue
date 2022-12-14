@@ -2,7 +2,7 @@
   <header class="w-full text-sm">
     <div class="fixed top-0 left-0 h-16 w-full bg-white">
       <div
-        class="mx-auto flex h-full flex-nowrap border-b border-solid border-brand-gray-1 px-8"
+        class="mx-auto flex h-full flex-nowrap border-b border-brand-gray-1 px-8"
       >
         <a :href="url" class="flex h-full items-center">{{ company }}</a>
         <nav class="ml-12 h-full">
@@ -19,6 +19,7 @@
           <action-button v-else text="Sign in" @click="loginUser" />
         </div>
       </div>
+      <sub-nav />
     </div>
   </header>
 </template>
@@ -26,12 +27,14 @@
 <script>
 import ActionButton from "@/components/ActionButton.vue";
 import ProfileImage from "@/components/ProfileImage.vue";
+import SubNav from "@/components/SubNav.vue";
 
 export default {
   name: "MainNav",
   components: {
     ActionButton,
     ProfileImage,
+    SubNav,
   },
   data() {
     return {
