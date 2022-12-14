@@ -1,7 +1,11 @@
 <template>
   <section>
-    <h1>{{ action }} for everyone</h1>
-    <h2>Find your next job at Gaggle.</h2>
+    <h1 class="mb-12 text-8xl font-bold tracking-tighter">
+      <span :class="actionClass">{{ action }}</span>
+      <br />
+      <span class="whitespace-nowrap">for everyone</span>
+    </h1>
+    <h2 class="text-3xl">Find your next job at Gaggle.</h2>
   </section>
 </template>
 
@@ -13,6 +17,13 @@ export default {
       action: "Build",
       interval: null,
     };
+  },
+  computed: {
+    actionClass() {
+      return {
+        [this.action.toLowerCase()]: true,
+      };
+    },
   },
   created() {
     this.changeTitle();
@@ -28,8 +39,26 @@ export default {
         const nextActionIndex = (currentActionIndex + 1) % 4;
         const nextAction = actions[nextActionIndex];
         this.action = nextAction;
-      }, 3000);
+      }, 5000);
     },
   },
 };
 </script>
+
+<style scoped>
+.build {
+  color: #1a73e8;
+}
+
+.create {
+  color: #34a853;
+}
+
+.design {
+  color: #f9ab00;
+}
+
+.code {
+  color: #d93025;
+}
+</style>
