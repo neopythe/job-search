@@ -6,7 +6,7 @@
           1 column
         </div>
         <div class="col-span-5 col-start-2 border border-blue-100">
-          5 columns
+          <headline-animation />
         </div>
         <div class="col-span-5 col-start-7 border border-blue-100">
           5 columns
@@ -20,7 +20,12 @@
 </template>
 
 <script>
+import HeadlineAnimation from "./HeadlineAnimation.vue";
+
 export default {
   name: "HeroSection",
+  components: {
+    HeadlineAnimation,
+  },
 };
 </script>
