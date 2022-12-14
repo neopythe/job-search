@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import nextElementInList from "@/utils/nextElementInList";
+
 export default {
   name: "HeadlineAnimation",
   data() {
@@ -35,10 +37,7 @@ export default {
     changeTitle() {
       this.interval = setInterval(() => {
         const actions = ["Build", "Create", "Design", "Code"];
-        const currentActionIndex = actions.indexOf(this.action);
-        const nextActionIndex = (currentActionIndex + 1) % 4;
-        const nextAction = actions[nextActionIndex];
-        this.action = nextAction;
+        this.action = nextElementInList(actions, this.action);
       }, 5000);
     },
   },
