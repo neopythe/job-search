@@ -5,7 +5,7 @@
       <br />
       <span class="whitespace-nowrap">for everyone</span>
     </h1>
-    <h2 class="text-3xl">Find your next job at Gaggle.</h2>
+    <h2 class="whitespace-nowrap text-3xl">Find your next job at Gaggle.</h2>
   </section>
 </template>
 
