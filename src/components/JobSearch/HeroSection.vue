@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import HeadlineAnimation from "./HeadlineAnimation.vue";
-import JobSearchForm from "./JobSearchForm.vue";
+import HeadlineAnimation from "@/components/JobSearch/HeadlineAnimation.vue";
+import JobSearchForm from "@/components/JobSearch/JobSearchForm.vue";
 
 export default {
   name: "HeroSection",

@@ -1,7 +1,7 @@
 import { nextTick } from "vue";
 import { render, screen } from "@testing-library/vue";
 
-import HeadlineAnimation from "@/components/HeadlineAnimation.vue";
+import HeadlineAnimation from "@/components/JobSearch/HeadlineAnimation.vue";
 
 describe("HeadlineAnimation", () => {
   beforeEach(() => {

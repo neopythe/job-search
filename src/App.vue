@@ -4,8 +4,8 @@
 </template>
 
 <script>
-import HeroSection from "@/components/HeroSection.vue";
-import MainNav from "@/components/MainNav.vue";
+import HeroSection from "@/components/JobSearch/HeroSection.vue";
+import MainNav from "@/components/Navigation/MainNav.vue";
 
 export default {
   name: "App",
