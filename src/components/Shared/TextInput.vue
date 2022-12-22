@@ -10,16 +10,16 @@
 <script>
 export default {
   name: "TextInput",
-  data() {
-    return {
-      value: "",
-    };
+  props: {
+    value: {
+      type: String,
+      required: true,
+    },
   },
   methods: {
     handleInput($event) {
-      this.value = $event.target.value;
       // emitting an event to the parent component with a name of our choice as well as a payload of data as a second argument:
-      this.$emit("handleInput", this.value);
+      this.$emit("handleInput", $event.target.value);
     },
   },
 };
