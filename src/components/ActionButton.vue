@@ -26,11 +26,11 @@ export default {
 
 <style scoped>
 button {
-  @apply whitespace-nowrap rounded px-5 py-2.5 font-semibold hover:shadow-blue;
+  @apply whitespace-nowrap  px-5 py-2.5 font-semibold hover:shadow-blue;
 }
 
 .primary {
-  @apply border-0 bg-brand-blue-1 text-xs text-white;
+  @apply rounded bg-brand-blue-1 text-xs text-white;
 }
 
 .secondary {
