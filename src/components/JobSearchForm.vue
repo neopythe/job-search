@@ -14,6 +14,7 @@
           :value="role"
           placeholder="Software engineer"
           class="w-full text-lg font-normal focus:outline-none"
+          @input="updateRole"
         />
       </div>
       <span
@@ -27,6 +28,7 @@
           :value="location"
           placeholder="Los Angeles"
           class="w-full text-lg font-normal focus:outline-none"
+          @input="location = $event.target.value"
         />
       </div>
     </div>
@@ -46,6 +48,11 @@ export default {
       role: "",
       location: "",
     };
+  },
+  methods: {
+    updateRole(event) {
+      this.role = event.target.value;
+    },
   },
 };
 </script>
