@@ -11,6 +11,7 @@
         <label for="" class="absolute left-0 -top-8">Role</label>
         <input
           type="text"
+          :value="role"
           placeholder="Software engineer"
           class="w-full text-lg font-normal focus:outline-none"
         />
@@ -23,6 +24,7 @@
         <label for="" class="absolute left-0 -top-8">Where?</label>
         <input
           type="text"
+          :value="location"
           placeholder="Los Angeles"
           class="w-full text-lg font-normal focus:outline-none"
         />
@@ -38,6 +40,12 @@ export default {
   name: "JobSearchForm",
   components: {
     ActionButton,
+  },
+  data() {
+    return {
+      role: "",
+      location: "",
+    };
   },
 };
 </script>
