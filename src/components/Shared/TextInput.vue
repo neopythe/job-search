@@ -1,7 +1,7 @@
 <template>
   <input
     type="text"
-    :value="value"
+    :value="modelValue"
     class="w-full text-lg font-normal focus:outline-none"
     @input="handleInput"
   />
@@ -11,7 +11,7 @@
 export default {
   name: "TextInput",
   props: {
-    value: {
+    modelValue: {
       type: String,
       required: true,
     },
@@ -19,7 +19,7 @@ export default {
   methods: {
     handleInput($event) {
       // emitting an event to the parent component with a name of our choice as well as a payload of data as a second argument:
-      this.$emit("handleInput", $event.target.value);
+      this.$emit("update:modelValue", $event.target.value);
     },
   },
 };
