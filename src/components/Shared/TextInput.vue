@@ -16,6 +16,7 @@ export default {
       required: true,
     },
   },
+  emits: ["update:modelValue"],
   methods: {
     handleInput($event) {
       // emitting an event to the parent component with a name of our choice as well as a payload of data as a second argument:
