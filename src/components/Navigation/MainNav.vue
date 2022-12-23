@@ -4,7 +4,12 @@
       <div
         class="mx-auto flex h-full flex-nowrap border-b border-brand-gray-1 px-8"
       >
-        <a :href="url" class="flex h-full items-center">{{ company }}</a>
+        <router-link
+          :to="{ name: 'Home' }"
+          class="flex h-full items-center whitespace-nowrap"
+        >
+          Gaggle Careers
+        </router-link>
         <nav class="ml-12 h-full">
           <ul class="flex h-full list-none gap-9">
             <li v-for="menuItem in menuItems" :key="menuItem" class="h-full">
@@ -38,8 +43,6 @@ export default {
   },
   data() {
     return {
-      company: "Gaggle Careers",
-      url: "/",
       menuItems: ["Teams", "Locations", "Benefits", "Jobs", "Students"],
       isLoggedIn: false,
     };
