@@ -7,7 +7,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest --environment jsdom --coverage",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "backend": "json-server --watch db.json"
   },
   "dependencies": {
     "vue": "^3.2.47",
