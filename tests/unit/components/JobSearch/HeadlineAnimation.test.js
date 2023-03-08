@@ -45,6 +45,7 @@ describe("HeadlineAnimation", () => {
     vi.stubGlobal("clearInterval", clearInterval);
     const { unmount } = render(HeadlineAnimation);
     unmount();
+    vi.unstubAllGlobals();
 
     expect(clearInterval).toHaveBeenCalled();
   });
