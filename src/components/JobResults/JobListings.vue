@@ -1,9 +1,7 @@
 <template>
   <main class="flex-auto bg-brand-gray-2 p-8">
     <ol>
-      <job-listing />
-      <job-listing />
-      <job-listing />
+      <job-listing v-for="job in jobs" :key="job.id" :job="job" />
     </ol>
   </main>
 </template>
