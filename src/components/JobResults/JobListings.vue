@@ -23,7 +23,8 @@ export default {
   },
   computed: {
     displayedJobs() {
-      return this.jobs.slice(0, 10);
+      const page = this.$route.query?.page || 1;
+      return this.jobs.slice(page * 10 - 10, page * 10);
     },
   },
   async mounted() {
