@@ -7,6 +7,8 @@ describe("JobListing", () => {
   const createJobProps = (jobProps = {}) => ({
     title: "Vue Developer",
     organization: "Airbnb",
+    locations: ["New York"],
+    minimumQualifications: ["Code"],
     ...jobProps,
   });
 
@@ -37,5 +39,23 @@ describe("JobListing", () => {
     renderJobListing(jobProps);
 
     expect(screen.getByText("Samsung")).toBeInTheDocument();
+  });
+
+  it("renders job locations", () => {
+    const jobProps = createJobProps({ locations: ["Orlando", "Jacksonville"] });
+    renderJobListing(jobProps);
+
+    expect(screen.getByText("Orlando")).toBeInTheDocument();
+    expect(screen.getByText("Jacksonville")).toBeInTheDocument();
+  });
+
+  it("renders job qualifications", () => {
+    const jobProps = createJobProps({
+      minimumQualifications: ["Code", "Develop"],
+    });
+    renderJobListing(jobProps);
+
+    expect(screen.getByText("Code")).toBeInTheDocument();
+    expect(screen.getByText("Develop")).toBeInTheDocument();
   });
 });
