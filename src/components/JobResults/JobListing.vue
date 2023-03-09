@@ -1,7 +1,7 @@
 <template>
   <li class="mb-7">
     <router-link
-      to="/jobs/results/1"
+      :to="jobPageLink"
       class="mx-auto block rounded border border-brand-gray-1 bg-white hover:shadow-gray"
     >
       <div class="mx-8 border-b border-brand-gray-1 pt-5 pb-2">
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="mt-4 text-center text-sm font-semibold">
-          <router-link to="/jobs/results/1" class="text-brand-blue-1"
+          <router-link :to="jobPageLink" class="text-brand-blue-1"
             >Expand</router-link
           >
         </div>
@@ -46,5 +46,16 @@
 <script>
 export default {
   name: "JobListing",
+  props: {
+    job: {
+      type: Object,
+      required: true,
+    },
+  },
+  computed: {
+    jobPageLink() {
+      return `/jobs/results/${this.job.id}`;
+    },
+  },
 };
 </script>
