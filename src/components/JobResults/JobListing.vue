@@ -6,14 +6,22 @@
     >
       <div class="mx-8 border-b border-brand-gray-1 pt-5 pb-2">
         <h2 class="mb-2 text-2xl font-semibold">
-          Technical Program Manager, Perception, Augmented Reality
+          {{ job.title }}
         </h2>
-        <div class="flex py-1 align-middle text-sm font-semibold">
-          <div class="mr-5">
-            <span>Gaggle</span>
+        <div class="flex py-1 align-middle text-sm">
+          <div class="mr-5 font-semibold">
+            <span>{{ job.organization }}</span>
           </div>
           <div>
-            <span>San Francisco, CA, USA</span>
+            <ul>
+              <li
+                v-for="location in job.locations"
+                :key="location"
+                class="mr-5 inline-block"
+              >
+                <span>{{ location }}</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -24,11 +32,11 @@
             <ul
               class="flex list-disc flex-col gap-1 pl-8 marker:text-brand-gray-1"
             >
-              <li>Bachelor's degree or equivalent practical experience</li>
-              <li>5 years of experience in program management</li>
-              <li>
-                Experience analyzing data through querying database (e.g. SQL),
-                using spreadsheet software, and creating statistical models
+              <li
+                v-for="qualification in job.minimumQualifications"
+                :key="qualification"
+              >
+                {{ qualification }}
               </li>
             </ul>
           </div>
