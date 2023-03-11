@@ -5,7 +5,7 @@
     </ol>
     <div class="mx-auto mt-10">
       <div class="flex flex-nowrap">
-        <p class="flex-grow text-sm">Page {{ currentPage }}</p>
+        <p class="flex-grow text-sm">Page {{ currentPage }} of {{ maxPage }}</p>
       </div>
     </div>
   </main>
@@ -28,7 +28,20 @@ export default {
   },
   computed: {
     currentPage() {
+      if (this.$route.query?.page < 1) return 1;
+      if (this.$route.query?.page > this.maxPage) return this.maxPage;
       return this.$route.query?.page || 1;
+    },
+    previousPage() {
+      const previousPage = this.currentPage - 1;
+      return previousPage >= 1 ? previousPage : null;
+    },
+    nextPage() {
+      const nextPage = this.currentPage + 1;
+      return nextPage <= this.maxPage ? nextPage : null;
+    },
+    maxPage() {
+      return Math.ceil(this.jobs.length / 10) || 1;
     },
     displayedJobs() {
       const page = this.currentPage;
