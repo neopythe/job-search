@@ -6,6 +6,20 @@
     <div class="mx-auto mt-10">
       <div class="flex flex-nowrap">
         <p class="flex-grow text-sm">Page {{ currentPage }} of {{ maxPage }}</p>
+        <div class="flex items-center justify-center gap-6">
+          <router-link
+            v-if="previousPage"
+            :to="{ name: 'JobResults', query: { page: previousPage } }"
+            class="text-sm font-semibold text-brand-blue-1"
+            >Previous</router-link
+          >
+          <router-link
+            v-if="nextPage"
+            :to="{ name: 'JobResults', query: { page: nextPage } }"
+            class="text-sm font-semibold text-brand-blue-1"
+            >Next</router-link
+          >
+        </div>
       </div>
     </div>
   </main>
@@ -30,7 +44,7 @@ export default {
     currentPage() {
       if (this.$route.query?.page < 1) return 1;
       if (this.$route.query?.page > this.maxPage) return this.maxPage;
-      return this.$route.query?.page || 1;
+      return parseInt(this.$route.query?.page) || 1;
     },
     previousPage() {
       const previousPage = this.currentPage - 1;
