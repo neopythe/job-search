@@ -81,4 +81,48 @@ describe("JobListings", () => {
       expect(screen.getByText("Page 1", { exact: false })).toBeInTheDocument();
     });
   });
+
+  describe("when user is on first page", () => {
+    it("does not show link to previous page", async () => {
+      axios.get.mockResolvedValue({ data: Array(15).fill({}) });
+      const $route = createRoute({ page: 1 });
+      renderJobListings($route);
+      await flushPromises();
+      const previousLink = screen.queryByRole("link", { name: /previous/i });
+
+      expect(previousLink).not.toBeInTheDocument();
+    });
+
+    it("shows link to next page", async () => {
+      axios.get.mockResolvedValue({ data: Array(15).fill({}) });
+      const $route = createRoute({ page: 1 });
+      renderJobListings($route);
+      await flushPromises();
+      const nextLink = screen.queryByRole("link", { name: /next/i });
+
+      expect(nextLink).toBeInTheDocument();
+    });
+  });
+
+  describe("when user is on last page", () => {
+    it("does not show link to next page", async () => {
+      axios.get.mockResolvedValue({ data: Array(15).fill({}) });
+      const $route = createRoute({ page: 2 });
+      renderJobListings($route);
+      await flushPromises();
+      const nextLink = screen.queryByRole("link", { name: /next/i });
+
+      expect(nextLink).not.toBeInTheDocument();
+    });
+
+    it("shows link to previous page", async () => {
+      axios.get.mockResolvedValue({ data: Array(15).fill({}) });
+      const $route = createRoute({ page: 2 });
+      renderJobListings($route);
+      await flushPromises();
+      const previousLink = screen.queryByRole("link", { name: /previous/i });
+
+      expect(previousLink).toBeInTheDocument();
+    });
+  });
 });
