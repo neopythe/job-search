@@ -3,11 +3,13 @@ import { createTestingPinia } from "@pinia/testing";
 import { render, screen } from "@testing-library/vue";
 import userEvent from "@testing-library/user-event";
 
+import { useUserStore } from "@/stores/user";
+
 import MainNav from "@/components/Navigation/MainNav.vue";
 
 describe("MainNav", () => {
   const renderMainNav = () => {
-    const pinia = createTestingPinia({ stubActions: false });
+    const pinia = createTestingPinia();
     const $route = { name: "Home" };
     render(MainNav, {
       global: {
@@ -47,6 +49,7 @@ describe("MainNav", () => {
   describe("when the user logs in", () => {
     it("displays user profile picture", async () => {
       renderMainNav();
+      const userStore = useUserStore();
       let profileImage = screen.queryByRole("img", {
         name: /user profile image/i,
       });
@@ -56,6 +59,7 @@ describe("MainNav", () => {
       const loginButton = screen.getByRole("button", {
         name: /sign in/i,
       });
+      userStore.isLoggedIn = true;
       await userEvent.click(loginButton);
       profileImage = screen.getByRole("img", {
         name: /user profile image/i,
