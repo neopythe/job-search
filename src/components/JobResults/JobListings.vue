@@ -49,15 +49,15 @@ export default {
       maxPage() {
         return Math.ceil(this.jobs.length / 10) || 1;
       },
-      nextPage() {
-        const nextPage = this.currentPage + 1;
-        return nextPage <= this.maxPage ? nextPage : null;
-      },
     }),
     currentPage() {
       if (this.$route.query?.page < 1) return 1;
       if (this.$route.query?.page > this.maxPage) return this.maxPage;
       return parseInt(this.$route.query?.page) || 1;
+    },
+    nextPage() {
+      const nextPage = this.currentPage + 1;
+      return nextPage <= this.maxPage ? nextPage : null;
     },
     previousPage() {
       const previousPage = this.currentPage - 1;
