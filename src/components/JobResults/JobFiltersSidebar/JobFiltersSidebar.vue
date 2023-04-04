@@ -7,17 +7,20 @@
           <action-button text="Clear filters" type="secondary" />
         </div>
       </div>
+      <collapsible-accordion />
     </section>
   </div>
 </template>
 
 <script>
 import ActionButton from "@/components/Shared/ActionButton.vue";
+import CollapsibleAccordion from "@/components/Shared/CollapsibleAccordion.vue";
 
 export default {
   name: "JobFiltersSidebar",
   components: {
     ActionButton,
+    CollapsibleAccordion,
   },
 };
 </script>
