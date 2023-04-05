@@ -2,6 +2,7 @@
   <div class="border-b border-brand-gray-1 py-5">
     <div
       class="flex cursor-pointer flex-wrap items-center justify-between"
+      role="button"
       @click="toggleIsOpen"
     >
       <h3 class="font-semibold">{{ header }}</h3>
