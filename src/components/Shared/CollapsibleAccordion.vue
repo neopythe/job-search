@@ -1,10 +1,10 @@
 <template>
-  <div class="border-b border-brand-gray-2 py-5">
+  <div class="border-b border-brand-gray-1 py-5">
     <div
       class="flex cursor-pointer flex-wrap items-center justify-between"
       @click="toggleIsOpen"
     >
-      <h3 class="font-semibold">Organizations</h3>
+      <h3 class="font-semibold">{{ header }}</h3>
       <font-awesome-icon :icon="caretIcon" />
     </div>
     <div v-if="isOpen" class="mt-5 w-full">
@@ -16,6 +16,12 @@
 <script>
 export default {
   name: "CollapsibleAccordion",
+  props: {
+    header: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       isOpen: false,
