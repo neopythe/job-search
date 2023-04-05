@@ -1,9 +1,9 @@
 <template>
   <header-container>
-    <template v-slot:title>
+    <template #title>
       <h1 class="w-full text-4xl">Teams</h1>
     </template>
-    <template v-slot:subtitle>
+    <template #subtitle>
       <div class="mx-auto max-w-screen-sm">
         <h2 class="my-4 w-full px-4 text-sm font-light">
           Together, we create access to information and build products that
