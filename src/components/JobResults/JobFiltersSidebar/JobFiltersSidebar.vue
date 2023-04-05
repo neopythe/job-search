@@ -1,5 +1,7 @@
 <template>
-  <div class="flex flex-col border-r border-brand-gray-1 p-4">
+  <div
+    class="flex w-[23.25rem] flex-shrink-0 flex-col border-r border-brand-gray-1 p-4"
+  >
     <section class="pb-5">
       <div class="flex flex-row justify-between">
         <h3 class="my-3 font-semibold">What do you want to do?</h3>
