@@ -1,6 +1,6 @@
 <template>
   <main class="flex-auto bg-brand-gray-2 p-8">
-    <ol>
+    <ol class="mx-auto max-w-[61.25rem]">
       <job-listing v-for="job in displayedJobs" :key="job.id" :job="job" />
     </ol>
     <div class="mx-auto mt-10">
