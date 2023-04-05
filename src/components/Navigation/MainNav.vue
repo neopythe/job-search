@@ -54,7 +54,7 @@ export default {
   data() {
     return {
       menuItems: [
-        { text: "Teams", route: { name: "Home" } },
+        { text: "Teams", route: { name: "Teams" } },
         { text: "Locations", route: { name: "Home" } },
         { text: "Benefits", route: { name: "Home" } },
         { text: "Jobs", route: { name: "JobResults" } },
