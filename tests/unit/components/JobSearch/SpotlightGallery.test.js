@@ -6,7 +6,7 @@ import SpotlightGallery from "@/components/JobSearch/SpotlightGallery.vue";
 vi.mock("axios");
 
 describe("SpotlightGallery", () => {
-  it("provides image to parent component", async () => {
+  const mockSpotlightsResponse = (spotlight = {}) => {
     axios.get.mockResolvedValue({
       data: [
         {
@@ -14,9 +14,14 @@ describe("SpotlightGallery", () => {
           img: "Some image",
           title: "Some title",
           description: "Some description",
+          ...spotlight,
         },
       ],
     });
+  };
+
+  it("provides image to parent component", async () => {
+    mockSpotlightsResponse({ img: "Other image" });
     render(SpotlightGallery, {
       slots: {
         default: `
@@ -25,22 +30,13 @@ describe("SpotlightGallery", () => {
           </template>`,
       },
     });
-    const text = await screen.findByText("Some image");
+    const text = await screen.findByText("Other image");
 
     expect(text).toBeInTheDocument();
   });
 
   it("provides title to parent component", async () => {
-    axios.get.mockResolvedValue({
-      data: [
-        {
-          id: 1,
-          img: "Some image",
-          title: "Some title",
-          description: "Some description",
-        },
-      ],
-    });
+    mockSpotlightsResponse({ title: "Other title" });
     render(SpotlightGallery, {
       slots: {
         default: `
@@ -49,22 +45,13 @@ describe("SpotlightGallery", () => {
           </template>`,
       },
     });
-    const text = await screen.findByText("Some title");
+    const text = await screen.findByText("Other title");
 
     expect(text).toBeInTheDocument();
   });
 
   it("provides description to parent component", async () => {
-    axios.get.mockResolvedValue({
-      data: [
-        {
-          id: 1,
-          img: "Some image",
-          title: "Some title",
-          description: "Some description",
-        },
-      ],
-    });
+    mockSpotlightsResponse({ description: "Another description" });
     render(SpotlightGallery, {
       slots: {
         default: `
@@ -73,7 +60,7 @@ describe("SpotlightGallery", () => {
           </template>`,
       },
     });
-    const text = await screen.findByText("Some description");
+    const text = await screen.findByText("Another description");
 
     expect(text).toBeInTheDocument();
   });
