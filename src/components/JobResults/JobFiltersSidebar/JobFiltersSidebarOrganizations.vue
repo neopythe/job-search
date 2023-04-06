@@ -3,25 +3,13 @@
     <div class="mt-5">
       <fieldset>
         <ul class="flex flex-wrap text-sm">
-          <li class="flex h-8 w-1/2 items-center">
-            <input id="VueTube" type="checkbox" class="mr-3" />
-            <label for="VueTube">VueTube</label>
-          </li>
-          <li class="flex h-8 w-1/2 items-center">
-            <input id="Vue and Me" type="checkbox" class="mr-3" />
-            <label for="Vue and Me">Vue and Me</label>
-          </li>
-          <li class="flex h-8 w-1/2 items-center">
-            <input id="Et Vue Brute" type="checkbox" class="mr-3" />
-            <label for="Et Vue Brute">Et Vue Brute</label>
-          </li>
-          <li class="flex h-8 w-1/2 items-center">
-            <input id="Vue Can Do It" type="checkbox" class="mr-3" />
-            <label for="Vue Can Do It">Vue Can Do It</label>
-          </li>
-          <li class="flex h-8 w-1/2 items-center">
-            <input id="Vue and a Half Men" type="checkbox" class="mr-3" />
-            <label for="Vue and a Half Men">Vue and a Half Men</label>
+          <li
+            v-for="organization in UNIQUE_ORGANIZATIONS"
+            :key="organization"
+            class="flex h-8 w-1/2 items-center"
+          >
+            <input id="organization" type="checkbox" class="mr-3" />
+            <label for="organization">{{ organization }}</label>
           </li>
         </ul>
       </fieldset>
