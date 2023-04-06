@@ -18,15 +18,15 @@
       </div>
     </section>
     <spotlight-gallery class="flex justify-center pb-16">
-      <template #default="{ spotlight }">
+      <template #default="{ img, title, description }">
         <router-link
           to="/jobs/results"
           class="mx-5 flex h-72 w-64 flex-col overflow-hidden rounded-lg border border-brand-gray-1 shadow-brand-gray-3 transition ease-in-out hover:shadow-xl"
         >
-          <img :src="spotlight.img" alt="" class="h-2/5 object-cover" />
+          <img :src="img" alt="" class="h-2/5 object-cover" />
           <div class="h-48 p-3">
-            <h3 class="text-lg font-semibold">{{ spotlight.title }}</h3>
-            <p class="mt-3 text-sm">{{ spotlight.description }}</p>
+            <h3 class="text-lg font-semibold">{{ title }}</h3>
+            <p class="mt-3 text-sm">{{ description }}</p>
           </div>
         </router-link>
       </template>
