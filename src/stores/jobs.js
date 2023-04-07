@@ -26,11 +26,16 @@ export const useJobsStore = defineStore("jobs", {
       const { selectedJobTypes, selectedOrganizations } = useUserStore();
       const noSelectedJobTypes = selectedJobTypes.length === 0;
       const noSelectedOrganizations = selectedOrganizations.length === 0;
-      if (noSelectedJobTypes && noSelectedOrganizations) return jobs;
 
       return jobs
-        .filter(({ jobType }) => selectedJobTypes.includes(jobType))
-        .filter(({ organization }) => selectedJobTypes.includes(organization));
+        .filter(({ jobType }) => {
+          if (noSelectedJobTypes) return true;
+          return selectedJobTypes.includes(jobType);
+        })
+        .filter(({ organization }) => {
+          if (noSelectedOrganizations) return true;
+          return selectedOrganizations.includes(organization);
+        });
     },
     [FILTERED_JOBS_BY_JOB_TYPES]({ jobs }) {
       const { selectedJobTypes } = useUserStore();
