@@ -6,6 +6,7 @@ import { useUserStore } from "@/stores/user";
 
 export const FETCH_JOBS = "FETCH_JOBS";
 export const FILTERED_JOBS_BY_ORGANIZATIONS = "FILTERED_JOBS_BY_ORGANIZATIONS";
+export const UNIQUE_JOB_TYPES = "UNIQUE_JOB_TYPES";
 export const UNIQUE_ORGANIZATIONS = "UNIQUE_ORGANIZATIONS";
 
 export const useJobsStore = defineStore("jobs", {
@@ -26,6 +27,11 @@ export const useJobsStore = defineStore("jobs", {
             selectedOrganizations.includes(organization)
           )
         : jobs;
+    },
+    [UNIQUE_JOB_TYPES]({ jobs }) {
+      const uniqueJobTypes = new Set();
+      jobs.forEach(({ jobType }) => uniqueJobTypes.add(jobType));
+      return uniqueJobTypes;
     },
     [UNIQUE_ORGANIZATIONS]({ jobs }) {
       const uniqueOrganizations = new Set();

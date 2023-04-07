@@ -78,6 +78,20 @@ describe("getters", () => {
     });
   });
 
+  describe("UNIQUE_JOB_TYPES", () => {
+    it("finds unique job types from list of jobs", () => {
+      const store = useJobsStore();
+      store.jobs = [
+        { jobType: "Intern" },
+        { jobType: "Part-time" },
+        { jobType: "Intern" },
+      ];
+      const result = store.UNIQUE_JOB_TYPES;
+
+      expect(result).toEqual(new Set(["Intern", "Part-time"]));
+    });
+  });
+
   describe("UNIQUE_ORGANIZATIONS", () => {
     it("finds unique organizations from list of jobs", () => {
       const store = useJobsStore();
