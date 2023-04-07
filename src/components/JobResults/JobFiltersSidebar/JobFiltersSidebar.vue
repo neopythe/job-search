@@ -1,6 +1,15 @@
 <template>
   <div
-    class="flex w-[23.25rem] flex-shrink-0 flex-col border-r border-brand-gray-1 p-4"
+    :class="[
+      'flex',
+      'w-[23.25rem]',
+      'flex-shrink-0',
+      'flex-col',
+      'border-r',
+      'border-brand-gray-1',
+      'p-4',
+      heightClass,
+    ]"
   >
     <section class="pb-5">
       <div class="flex flex-row justify-between">
@@ -19,6 +28,10 @@
 </template>
 
 <script>
+import { mapState } from "pinia";
+
+import { useUserStore } from "@/stores/user";
+
 import ActionButton from "@/components/Shared/ActionButton.vue";
 import CollapsibleAccordion from "@/components/Shared/CollapsibleAccordion.vue";
 import JobFiltersSidebarOrganizations from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarOrganizations.vue";
@@ -29,6 +42,15 @@ export default {
     ActionButton,
     CollapsibleAccordion,
     JobFiltersSidebarOrganizations,
+  },
+  computed: {
+    ...mapState(useUserStore, ["isLoggedIn"]),
+    heightClass() {
+      return {
+        "min-h-[calc(100vh-4rem)]": !this.isLoggedIn,
+        "min-h-[calc(100vh-8rem)]": this.isLoggedIn,
+      };
+    },
   },
 };
 </script>
