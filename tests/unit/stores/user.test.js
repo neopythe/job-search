@@ -31,6 +31,15 @@ describe("actions", () => {
     setActivePinia(createPinia());
   });
 
+  describe("ADD_SELECTED_JOB_TYPES", () => {
+    it("updates job types by which the user has chosen to filter jobs", () => {
+      const store = useUserStore();
+      store.ADD_SELECTED_JOB_TYPES(["Full-time", "Part-time"]);
+
+      expect(store.selectedJobTypes).toEqual(["Full-time", "Part-time"]);
+    });
+  });
+
   describe("ADD_SELECTED_ORGANIZATIONS", () => {
     it("updates organizations by which the user has chosen to filter jobs", () => {
       const store = useUserStore();
