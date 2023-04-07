@@ -30,7 +30,7 @@ describe("JobFiltersSidebarOrganizations", () => {
     expect(organizations).toEqual(["Google", "Amazon"]);
   });
 
-  it.only("communicates that user has selected checkbox for organization", async () => {
+  it("communicates that user has selected checkbox for organization", async () => {
     const { jobsStore, userStore } = renderJobFiltersSidebarOrganizations();
     jobsStore.UNIQUE_ORGANIZATIONS = new Set(["Google", "Amazon", "Facebook"]);
     const button = screen.getByRole("button", { name: /organizations/i });
