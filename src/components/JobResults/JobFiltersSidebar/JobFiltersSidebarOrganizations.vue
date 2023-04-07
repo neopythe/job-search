@@ -14,6 +14,7 @@
               :value="organization"
               type="checkbox"
               class="mr-3"
+              @change="selectOrganization"
             />
             <label for="organization">{{ organization }}</label>
           </li>
@@ -24,9 +25,10 @@
 </template>
 
 <script>
-import { mapState } from "pinia";
+import { mapActions, mapState } from "pinia";
 
 import { useJobsStore, UNIQUE_ORGANIZATIONS } from "@/stores/jobs";
+import { useUserStore, ADD_SELECTED_ORGANIZATIONS } from "@/stores/user";
 
 import CollapsibleAccordion from "@/components/Shared/CollapsibleAccordion.vue";
 
@@ -38,6 +40,12 @@ export default {
   },
   computed: {
     ...mapState(useJobsStore, [UNIQUE_ORGANIZATIONS]),
+  },
+  methods: {
+    ...mapActions(useUserStore, [ADD_SELECTED_ORGANIZATIONS]),
+    selectOrganization() {
+      this.ADD_SELECTED_ORGANIZATIONS(this.selectedOrganizations);
+    },
   },
 };
 </script>
