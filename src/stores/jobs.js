@@ -20,10 +20,12 @@ export const useJobsStore = defineStore("jobs", {
   },
   getters: {
     [FILTERED_JOBS_BY_ORGANIZATIONS]({ jobs }) {
-      const userStore = useUserStore();
-      return jobs.filter(({ organization }) =>
-        userStore.selectedOrganizations.includes(organization)
-      );
+      const { selectedOrganizations } = useUserStore();
+      return selectedOrganizations.length > 0
+        ? jobs.filter(({ organization }) =>
+            selectedOrganizations.includes(organization)
+          )
+        : jobs;
     },
     [UNIQUE_ORGANIZATIONS]({ jobs }) {
       const uniqueOrganizations = new Set();
