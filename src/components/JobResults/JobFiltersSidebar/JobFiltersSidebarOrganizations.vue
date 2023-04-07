@@ -9,14 +9,14 @@
             class="flex h-8 w-1/2 items-center"
           >
             <input
-              id="organization"
+              :id="organization"
               v-model="selectedOrganizations"
               :value="organization"
               type="checkbox"
               class="mr-3"
               @change="selectOrganization"
             />
-            <label for="organization">{{ organization }}</label>
+            <label :for="organization">{{ organization }}</label>
           </li>
         </ul>
       </fieldset>
