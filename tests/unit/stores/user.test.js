@@ -33,4 +33,13 @@ describe("actions", () => {
       expect(store.isLoggedIn).toBe(true);
     });
   });
+
+  describe("ADD_SELECTED_ORGANIZATIONS", () => {
+    it("updates organizations by which the user has chosen to filter jobs", () => {
+      const store = useUserStore();
+      store.ADD_SELECTED_ORGANIZATIONS(["Org1", "Org2"]);
+
+      expect(store.selectedOrganizations).toEqual(["Org1", "Org2"]);
+    });
+  });
 });
