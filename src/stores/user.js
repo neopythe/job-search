@@ -6,6 +6,7 @@ export const LOGIN_USER = "LOGIN_USER";
 export const useUserStore = defineStore("user", {
   state: () => ({
     isLoggedIn: false,
+    selectedJobTypes: [],
     selectedOrganizations: [],
   }),
   actions: {
