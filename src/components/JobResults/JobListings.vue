@@ -1,29 +1,33 @@
 <template>
   <main class="flex-auto bg-brand-gray-2 p-8">
-    <ol class="mx-auto max-w-[61.25rem]">
-      <job-listing v-for="job in displayedJobs" :key="job.id" :job="job" />
-    </ol>
-    <div class="mx-auto mt-10">
-      <div class="flex flex-nowrap">
-        <p class="flex-grow text-sm">Page {{ currentPage }} of {{ maxPage }}</p>
-        <div class="flex items-center justify-center gap-6">
-          <router-link
-            v-if="previousPage"
-            :to="{ name: 'JobResults', query: { page: previousPage } }"
-            role="link"
-            class="text-sm font-semibold text-brand-blue-1"
-            >Previous</router-link
-          >
-          <router-link
-            v-if="nextPage"
-            :to="{ name: 'JobResults', query: { page: nextPage } }"
-            role="link"
-            class="text-sm font-semibold text-brand-blue-1"
-            >Next</router-link
-          >
+    <section class="mx-auto max-w-[61.25rem]">
+      <ol>
+        <job-listing v-for="job in displayedJobs" :key="job.id" :job="job" />
+      </ol>
+      <div class="mx-auto mt-10">
+        <div class="flex flex-nowrap">
+          <p class="flex-grow text-sm">
+            Page {{ currentPage }} of {{ maxPage }}
+          </p>
+          <div class="flex items-center justify-center gap-6">
+            <router-link
+              v-if="previousPage"
+              :to="{ name: 'JobResults', query: { page: previousPage } }"
+              role="link"
+              class="text-sm font-semibold text-brand-blue-1"
+              >Previous</router-link
+            >
+            <router-link
+              v-if="nextPage"
+              :to="{ name: 'JobResults', query: { page: nextPage } }"
+              role="link"
+              class="text-sm font-semibold text-brand-blue-1"
+              >Next</router-link
+            >
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 </template>
 
