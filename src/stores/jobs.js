@@ -8,6 +8,8 @@ export const FETCH_JOBS = "FETCH_JOBS";
 export const FILTERED_JOBS = "FILTERED_JOBS";
 export const FILTERED_JOBS_BY_JOB_TYPES = "FILTERED_JOBS_BY_JOB_TYPES";
 export const FILTERED_JOBS_BY_ORGANIZATIONS = "FILTERED_JOBS_BY_ORGANIZATIONS";
+export const INCLUDE_JOB_BY_JOB_TYPE = "INCLUDE_JOB_BY_JOB_TYPE";
+export const INCLUDE_JOB_BY_ORGANIZATION = "INCLUDE_JOB_BY_ORGANIZATION";
 export const UNIQUE_JOB_TYPES = "UNIQUE_JOB_TYPES";
 export const UNIQUE_ORGANIZATIONS = "UNIQUE_ORGANIZATIONS";
 
@@ -23,19 +25,9 @@ export const useJobsStore = defineStore("jobs", {
   },
   getters: {
     [FILTERED_JOBS]({ jobs }) {
-      const { selectedJobTypes, selectedOrganizations } = useUserStore();
-      const noSelectedJobTypes = selectedJobTypes.length === 0;
-      const noSelectedOrganizations = selectedOrganizations.length === 0;
-
       return jobs
-        .filter(({ jobType }) => {
-          if (noSelectedJobTypes) return true;
-          return selectedJobTypes.includes(jobType);
-        })
-        .filter(({ organization }) => {
-          if (noSelectedOrganizations) return true;
-          return selectedOrganizations.includes(organization);
-        });
+        .filter((job) => this.INCLUDE_JOB_BY_JOB_TYPE(job))
+        .filter((job) => this.INCLUDE_JOB_BY_ORGANIZATION(job));
     },
     [FILTERED_JOBS_BY_JOB_TYPES]({ jobs }) {
       const { selectedJobTypes } = useUserStore();
@@ -51,6 +43,22 @@ export const useJobsStore = defineStore("jobs", {
           )
         : jobs;
     },
+    [INCLUDE_JOB_BY_JOB_TYPE]:
+      () =>
+      ({ jobType }) => {
+        const { selectedJobTypes } = useUserStore();
+        return selectedJobTypes.length > 0
+          ? selectedJobTypes.includes(jobType)
+          : true;
+      },
+    [INCLUDE_JOB_BY_ORGANIZATION]:
+      () =>
+      ({ organization }) => {
+        const { selectedOrganizations } = useUserStore();
+        return selectedOrganizations.length > 0
+          ? selectedOrganizations.includes(organization)
+          : true;
+      },
     [UNIQUE_JOB_TYPES]({ jobs }) {
       const uniqueJobTypes = new Set();
       jobs.forEach(({ jobType }) => uniqueJobTypes.add(jobType));
