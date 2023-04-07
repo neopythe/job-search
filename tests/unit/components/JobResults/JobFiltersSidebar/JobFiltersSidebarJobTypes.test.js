@@ -12,11 +12,16 @@ describe("JobFiltersSidebarJobTypes", () => {
     const pinia = createTestingPinia();
     const jobsStore = useJobsStore();
     const userStore = useUserStore();
+    const $router = { push: vi.fn() };
     render(JobFiltersSidebarJobTypes, {
-      global: { plugins: [pinia], stubs: { FontAwesomeIcon: true } },
+      global: {
+        plugins: [pinia],
+        mocks: { $router },
+        stubs: { FontAwesomeIcon: true },
+      },
     });
 
-    return { jobsStore, userStore };
+    return { jobsStore, userStore, $router };
   };
 
   it("renders list of unique job types from jobs", async () => {
@@ -30,16 +35,31 @@ describe("JobFiltersSidebarJobTypes", () => {
     expect(jobTypes).toEqual(["Full-time", "Intern"]);
   });
 
-  it("communicates that user has selected checkbox for job type", async () => {
-    const { jobsStore, userStore } = renderJobFiltersSidebarJobTypes();
-    jobsStore.UNIQUE_JOB_TYPES = new Set(["Intern", "Part-time"]);
-    const button = screen.getByRole("button", { name: /job types/i });
-    await userEvent.click(button);
-    const internCheckbox = screen.getByRole("checkbox", {
-      name: /intern/i,
-    });
-    await userEvent.click(internCheckbox);
+  describe("when user clicks checkbox", () => {
+    it("communicates that user has selected checkbox for job type", async () => {
+      const { jobsStore, userStore } = renderJobFiltersSidebarJobTypes();
+      jobsStore.UNIQUE_JOB_TYPES = new Set(["Intern", "Part-time"]);
+      const button = screen.getByRole("button", { name: /job types/i });
+      await userEvent.click(button);
+      const internCheckbox = screen.getByRole("checkbox", {
+        name: /intern/i,
+      });
+      await userEvent.click(internCheckbox);
 
-    expect(userStore.ADD_SELECTED_JOB_TYPES).toHaveBeenCalledWith(["Intern"]);
+      expect(userStore.ADD_SELECTED_JOB_TYPES).toHaveBeenCalledWith(["Intern"]);
+    });
+
+    it("navigates user to job results page to see fresh batch of filtered jobs", async () => {
+      const { jobsStore, $router } = renderJobFiltersSidebarJobTypes();
+      jobsStore.UNIQUE_JOB_TYPES = new Set(["Intern"]);
+      const button = screen.getByRole("button", { name: /job types/i });
+      await userEvent.click(button);
+      const internCheckbox = screen.getByRole("checkbox", {
+        name: /intern/i,
+      });
+      await userEvent.click(internCheckbox);
+
+      expect($router.push).toHaveBeenCalledWith({ name: "JobResults" });
+    });
   });
 });
