@@ -25,7 +25,7 @@ describe("SubNav", () => {
     it("displays job count", async () => {
       const { jobsStore } = renderSubNav("JobResults");
       const jobQuantity = 16;
-      jobsStore.FILTERED_JOBS_BY_ORGANIZATIONS = Array(jobQuantity).fill({});
+      jobsStore.FILTERED_JOBS = Array(jobQuantity).fill({});
       const jobCount = await screen.findByText(jobQuantity);
 
       expect(jobCount).toBeInTheDocument();
@@ -36,7 +36,7 @@ describe("SubNav", () => {
     it("does not display job count", () => {
       const { jobsStore } = renderSubNav("Home");
       const jobQuantity = 16;
-      jobsStore.FILTERED_JOBS_BY_ORGANIZATIONS = Array(jobQuantity).fill({});
+      jobsStore.FILTERED_JOBS = Array(jobQuantity).fill({});
       const jobCount = screen.queryByText(jobQuantity);
 
       expect(jobCount).not.toBeInTheDocument();
