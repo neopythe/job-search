@@ -117,6 +117,54 @@ describe("getters", () => {
     });
   });
 
+  describe("INCLUDE_JOB_BY_JOB_TYPE", () => {
+    describe("when the user has not selected any job types", () => {
+      it("includes job", () => {
+        const userStore = useUserStore();
+        userStore.selectedJobTypes = [];
+        const jobsStore = useJobsStore();
+        const job = { jobType: "Full-time" };
+        const result = jobsStore.INCLUDE_JOB_BY_JOB_TYPE(job);
+
+        expect(result).toBe(true);
+      });
+    });
+
+    it("identifies whether job is associated with given job types", () => {
+      const userStore = useUserStore();
+      userStore.selectedJobTypes = ["Intern", "Part-time"];
+      const jobsStore = useJobsStore();
+      const job = { jobType: "Intern" };
+      const result = jobsStore.INCLUDE_JOB_BY_JOB_TYPE(job);
+
+      expect(result).toBe(true);
+    });
+  });
+
+  describe("INCLUDE_JOB_BY_ORGANIZATION", () => {
+    describe("when the user has not selected any organizations", () => {
+      it("includes job", () => {
+        const userStore = useUserStore();
+        userStore.selectedOrganizations = [];
+        const jobsStore = useJobsStore();
+        const job = { organization: "Google" };
+        const result = jobsStore.INCLUDE_JOB_BY_ORGANIZATION(job);
+
+        expect(result).toBe(true);
+      });
+    });
+
+    it("identifies whether job is associated with given organizations", () => {
+      const userStore = useUserStore();
+      userStore.selectedOrganizations = ["Google", "Microsoft"];
+      const jobsStore = useJobsStore();
+      const job = { organization: "Google" };
+      const result = jobsStore.INCLUDE_JOB_BY_ORGANIZATION(job);
+
+      expect(result).toBe(true);
+    });
+  });
+
   describe("UNIQUE_JOB_TYPES", () => {
     it("finds unique job types from list of jobs", () => {
       const store = useJobsStore();
