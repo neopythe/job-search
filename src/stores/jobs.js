@@ -5,6 +5,7 @@ import getJobs from "@/api/getJobs";
 import { useUserStore } from "@/stores/user";
 
 export const FETCH_JOBS = "FETCH_JOBS";
+export const FILTERED_JOBS_BY_JOB_TYPES = "FILTERED_JOBS_BY_JOB_TYPES";
 export const FILTERED_JOBS_BY_ORGANIZATIONS = "FILTERED_JOBS_BY_ORGANIZATIONS";
 export const UNIQUE_JOB_TYPES = "UNIQUE_JOB_TYPES";
 export const UNIQUE_ORGANIZATIONS = "UNIQUE_ORGANIZATIONS";
@@ -20,6 +21,12 @@ export const useJobsStore = defineStore("jobs", {
     },
   },
   getters: {
+    [FILTERED_JOBS_BY_JOB_TYPES]({ jobs }) {
+      const { selectedJobTypes } = useUserStore();
+      return selectedJobTypes.length > 0
+        ? jobs.filter(({ jobType }) => selectedJobTypes.includes(jobType))
+        : jobs;
+    },
     [FILTERED_JOBS_BY_ORGANIZATIONS]({ jobs }) {
       const { selectedOrganizations } = useUserStore();
       return selectedOrganizations.length > 0

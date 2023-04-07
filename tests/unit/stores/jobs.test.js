@@ -39,6 +39,45 @@ describe("getters", () => {
     setActivePinia(createPinia());
   });
 
+  describe("FILTERED_JOBS_BY_JOB_TYPES", () => {
+    it("identifies jobs that are associated with the given job types", () => {
+      const jobsStore = useJobsStore();
+      jobsStore.jobs = [
+        { jobType: "Full-time" },
+        { jobType: "Intern" },
+        { jobType: "Temporary" },
+      ];
+      const userStore = useUserStore();
+      userStore.selectedJobTypes = ["Full-time", "Temporary"];
+      const result = jobsStore.FILTERED_JOBS_BY_JOB_TYPES;
+
+      expect(result).toEqual([
+        { jobType: "Full-time" },
+        { jobType: "Temporary" },
+      ]);
+    });
+
+    describe("when the user has not selected any job types", () => {
+      it("returns all jobs", () => {
+        const jobsStore = useJobsStore();
+        jobsStore.jobs = [
+          { jobType: "Full-time" },
+          { jobType: "Intern" },
+          { jobType: "Temporary" },
+        ];
+        const userStore = useUserStore();
+        userStore.selectedJobTypes = [];
+        const result = jobsStore.FILTERED_JOBS_BY_JOB_TYPES;
+
+        expect(result).toEqual([
+          { jobType: "Full-time" },
+          { jobType: "Intern" },
+          { jobType: "Temporary" },
+        ]);
+      });
+    });
+  });
+
   describe("FILTERED_JOBS_BY_ORGANIZATIONS", () => {
     it("identifies jobs that are associated with the given organizations", () => {
       const jobsStore = useJobsStore();
