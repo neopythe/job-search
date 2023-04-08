@@ -1,3 +1,4 @@
+import { useRouter } from "vue-router";
 import { createTestingPinia } from "@pinia/testing";
 import { render, screen } from "@testing-library/vue";
 import userEvent from "@testing-library/user-event";
@@ -7,21 +8,21 @@ import { useUserStore } from "@/stores/user";
 
 import JobFiltersSidebarJobTypes from "@/components/JobResults/JobfiltersSidebar/JobFiltersSidebarJobTypes.vue";
 
+vi.mock("vue-router");
+
 describe("JobFiltersSidebarJobTypes", () => {
   const renderJobFiltersSidebarJobTypes = () => {
     const pinia = createTestingPinia();
     const jobsStore = useJobsStore();
     const userStore = useUserStore();
-    const $router = { push: vi.fn() };
     render(JobFiltersSidebarJobTypes, {
       global: {
         plugins: [pinia],
-        mocks: { $router },
         stubs: { FontAwesomeIcon: true },
       },
     });
 
-    return { jobsStore, userStore, $router };
+    return { jobsStore, userStore };
   };
 
   it("renders list of unique job types from jobs", async () => {
@@ -37,6 +38,7 @@ describe("JobFiltersSidebarJobTypes", () => {
 
   describe("when user clicks checkbox", () => {
     it("communicates that user has selected checkbox for job type", async () => {
+      useRouter.mockReturnValue({ push: vi.fn() });
       const { jobsStore, userStore } = renderJobFiltersSidebarJobTypes();
       jobsStore.UNIQUE_JOB_TYPES = new Set(["Intern", "Part-time"]);
       const button = screen.getByRole("button", { name: /job types/i });
@@ -50,7 +52,9 @@ describe("JobFiltersSidebarJobTypes", () => {
     });
 
     it("navigates user to job results page to see fresh batch of filtered jobs", async () => {
-      const { jobsStore, $router } = renderJobFiltersSidebarJobTypes();
+      const push = vi.fn();
+      useRouter.mockReturnValue({ push });
+      const { jobsStore } = renderJobFiltersSidebarJobTypes();
       jobsStore.UNIQUE_JOB_TYPES = new Set(["Intern"]);
       const button = screen.getByRole("button", { name: /job types/i });
       await userEvent.click(button);
@@ -59,7 +63,7 @@ describe("JobFiltersSidebarJobTypes", () => {
       });
       await userEvent.click(internCheckbox);
 
-      expect($router.push).toHaveBeenCalledWith({ name: "JobResults" });
+      expect(push).toHaveBeenCalledWith({ name: "JobResults" });
     });
   });
 });
