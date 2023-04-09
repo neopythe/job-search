@@ -41,6 +41,20 @@ describe("actions", () => {
 });
 
 describe("getters", () => {
+  const createJob = (job: Partial<Job> = {}): Job => ({
+    id: 1,
+    title: "Angular Developer",
+    organization: "Vue and Me",
+    degree: "Master's",
+    jobType: "Intern",
+    locations: ["Lisbon"],
+    minimumQualifications: ["Mesh granular deliverables"],
+    preferredQualifications: ["Mesh wireless metrics"],
+    description: ["Away someone forget effect wait land."],
+    dateAdded: "2021-07-04",
+    ...job,
+  });
+
   beforeEach(() => {
     setActivePinia(createPinia());
   });
@@ -51,7 +65,7 @@ describe("getters", () => {
         const userStore = useUserStore();
         userStore.selectedJobTypes = [];
         const jobsStore = useJobsStore();
-        const job = { jobType: "Full-time" } as Job;
+        const job = createJob({ jobType: "Full-time" });
         const result = jobsStore.INCLUDE_JOB_BY_JOB_TYPE(job);
 
         expect(result).toBe(true);
@@ -62,7 +76,7 @@ describe("getters", () => {
       const userStore = useUserStore();
       userStore.selectedJobTypes = ["Intern", "Part-time"];
       const jobsStore = useJobsStore();
-      const job = { jobType: "Intern" } as Job;
+      const job = createJob({ jobType: "Intern" });
       const result = jobsStore.INCLUDE_JOB_BY_JOB_TYPE(job);
 
       expect(result).toBe(true);
@@ -75,7 +89,7 @@ describe("getters", () => {
         const userStore = useUserStore();
         userStore.selectedOrganizations = [];
         const jobsStore = useJobsStore();
-        const job = { organization: "Google" } as Job;
+        const job = createJob({ organization: "Google" });
         const result = jobsStore.INCLUDE_JOB_BY_ORGANIZATION(job);
 
         expect(result).toBe(true);
@@ -86,7 +100,7 @@ describe("getters", () => {
       const userStore = useUserStore();
       userStore.selectedOrganizations = ["Google", "Microsoft"];
       const jobsStore = useJobsStore();
-      const job = { organization: "Google" } as Job;
+      const job = createJob({ organization: "Google" });
       const result = jobsStore.INCLUDE_JOB_BY_ORGANIZATION(job);
 
       expect(result).toBe(true);
@@ -97,10 +111,10 @@ describe("getters", () => {
     it("finds unique job types from list of jobs", () => {
       const store = useJobsStore();
       store.jobs = [
-        { jobType: "Intern" },
-        { jobType: "Part-time" },
-        { jobType: "Intern" },
-      ] as Job[];
+        createJob({ jobType: "Intern" }),
+        createJob({ jobType: "Part-time" }),
+        createJob({ jobType: "Intern" }),
+      ];
       const result = store.UNIQUE_JOB_TYPES;
 
       expect(result).toEqual(new Set(["Intern", "Part-time"]));
@@ -111,10 +125,10 @@ describe("getters", () => {
     it("finds unique organizations from list of jobs", () => {
       const store = useJobsStore();
       store.jobs = [
-        { organization: "Google" },
-        { organization: "Amazon" },
-        { organization: "Google" },
-      ] as Job[];
+        createJob({ organization: "Google" }),
+        createJob({ organization: "Amazon" }),
+        createJob({ organization: "Google" }),
+      ];
       const result = store.UNIQUE_ORGANIZATIONS;
 
       expect(result).toEqual(new Set(["Google", "Amazon"]));
