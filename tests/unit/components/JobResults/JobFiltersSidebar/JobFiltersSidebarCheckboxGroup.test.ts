@@ -1,21 +1,35 @@
+import type { Mock } from "vitest";
+
 import { useRouter } from "vue-router";
 import { createTestingPinia } from "@pinia/testing";
 import { render, screen } from "@testing-library/vue";
 import userEvent from "@testing-library/user-event";
 
-import JobFiltersSidebarCheckboxGroup from "@/components/JobResults/JobfiltersSidebar/JobFiltersSidebarCheckboxGroup.vue";
+import JobFiltersSidebarCheckboxGroup from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarCheckboxGroup.vue";
 
 vi.mock("vue-router");
 
+const useRouterMock = useRouter as Mock;
+
 describe("JobFiltersSidebarCheckboxGroup", () => {
-  const createProps = (props = {}) => ({
+  interface JobFiltersSidebarCheckboxGroupProps {
+    header: string;
+    uniqueValues: Set<string>;
+    action: Mock;
+  }
+
+  const createProps = (
+    props: Partial<JobFiltersSidebarCheckboxGroupProps> = {}
+  ): JobFiltersSidebarCheckboxGroupProps => ({
     header: "Some header",
     uniqueValues: new Set(["ValueA", "ValueB"]),
     action: vi.fn(),
     ...props,
   });
 
-  const renderJobFiltersSidebarCheckboxGroup = (props) => {
+  const renderJobFiltersSidebarCheckboxGroup = (
+    props: JobFiltersSidebarCheckboxGroupProps
+  ) => {
     const pinia = createTestingPinia();
     render(JobFiltersSidebarCheckboxGroup, {
       props: {
@@ -44,7 +58,7 @@ describe("JobFiltersSidebarCheckboxGroup", () => {
 
   describe("when user clicks checkbox", () => {
     it("communicates that user has selected checkbox for value", async () => {
-      useRouter.mockReturnValue({ push: vi.fn() });
+      useRouterMock.mockReturnValue({ push: vi.fn() });
       const action = vi.fn();
       const props = createProps({
         header: "Job types",
@@ -64,7 +78,7 @@ describe("JobFiltersSidebarCheckboxGroup", () => {
 
     it("navigates user to job results page to see fresh batch of filtered jobs", async () => {
       const push = vi.fn();
-      useRouter.mockReturnValue({ push });
+      useRouterMock.mockReturnValue({ push });
       const props = createProps({
         header: "Job types",
         uniqueValues: new Set(["Intern"]),
