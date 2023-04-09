@@ -34,17 +34,8 @@
   </main>
 </template>
 
-<script>
+<script setup lang="ts">
 import HeadlineAnimation from "@/components/JobSearch/HeadlineAnimation.vue";
 import JobSearchForm from "@/components/JobSearch/JobSearchForm.vue";
 import SpotlightGallery from "@/components/JobSearch/SpotlightGallery.vue";
-
-export default {
-  name: "HeroSection",
-  components: {
-    HeadlineAnimation,
-    JobSearchForm,
-    SpotlightGallery,
-  },
-};
 </script>
