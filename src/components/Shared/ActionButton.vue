@@ -4,14 +4,14 @@
   </button>
 </template>
 
-<script setup>
+<script setup lang="ts">
 defineProps({
   text: { type: String, required: true },
   type: {
     type: String,
     required: false,
     default: "primary",
-    validator(value) {
+    validator(value: string) {
       return ["primary", "secondary"].includes(value);
     },
   },
