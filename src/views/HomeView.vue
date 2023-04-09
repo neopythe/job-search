@@ -2,13 +2,6 @@
   <hero-section />
 </template>
 
-<script>
+<script setup lang="ts">
 import HeroSection from "@/components/JobSearch/HeroSection.vue";
-
-export default {
-  name: "HomeView",
-  components: {
-    HeroSection,
-  },
-};
 </script>
