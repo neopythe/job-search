@@ -18,7 +18,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["*.config.js"],
+      files: ["*.config.ts"],
       env: {
         node: true,
       },
