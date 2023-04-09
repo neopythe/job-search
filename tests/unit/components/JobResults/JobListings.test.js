@@ -12,6 +12,8 @@ vi.mock("vue-router");
 describe("JobListings", () => {
   const renderJobListings = () => {
     const pinia = createTestingPinia();
+    const jobsStore = useJobsStore();
+    jobsStore.FILTERED_JOBS = Array(15).fill({});
     render(JobListings, {
       global: {
         plugins: [pinia],
@@ -20,21 +22,20 @@ describe("JobListings", () => {
         },
       },
     });
+    return { jobsStore };
   };
 
   it("fetches jobs", () => {
     useRoute.mockReturnValue({ query: {} });
-    renderJobListings();
-    const jobsStore = useJobsStore();
+    const { jobsStore } = renderJobListings();
 
     expect(jobsStore.FETCH_JOBS).toHaveBeenCalled();
   });
 
   it("displays maximum of 10 jobs", async () => {
     useRoute.mockReturnValue({ query: { page: 1 } });
-    renderJobListings();
-    const jobsStore = useJobsStore();
-    jobsStore.jobs = Array(15).fill({});
+    const { jobsStore } = renderJobListings();
+    jobsStore.FILTERED_JOBS = Array(15).fill({});
     const jobListings = await screen.findAllByRole("listitem");
 
     expect(jobListings).toHaveLength(10);
@@ -52,9 +53,8 @@ describe("JobListings", () => {
   describe("when params include page number", () => {
     it("displays page number", async () => {
       useRoute.mockReturnValue({ query: { page: 2 } });
-      renderJobListings();
-      const jobsStore = useJobsStore();
-      jobsStore.jobs = Array(15).fill({});
+      const { jobsStore } = renderJobListings();
+      jobsStore.FILTERED_JOBS = Array(15).fill({});
       await flushPromises();
 
       expect(screen.getByText("Page 2", { exact: false })).toBeInTheDocument();
@@ -71,9 +71,11 @@ describe("JobListings", () => {
   });
 
   describe("when params include a page number greater than the maximum", () => {
-    it("displays the maximum page number", () => {
+    it("displays the maximum page number", async () => {
       useRoute.mockReturnValue({ query: { page: 2 } });
-      renderJobListings();
+      const { jobsStore } = renderJobListings();
+      jobsStore.FILTERED_JOBS = Array(0).fill({});
+      await flushPromises();
 
       expect(screen.getByText("Page 1", { exact: false })).toBeInTheDocument();
     });
@@ -82,9 +84,9 @@ describe("JobListings", () => {
   describe("when user is on first page", () => {
     it("does not show link to previous page", async () => {
       useRoute.mockReturnValue({ query: { page: 1 } });
-      renderJobListings();
-      const jobsStore = useJobsStore();
-      jobsStore.jobs = Array(15).fill({});
+      const { jobsStore } = renderJobListings();
+      jobsStore.FILTERED_JOBS = Array(15).fill({});
+      await flushPromises();
       const previousLink = screen.queryByRole("link", { name: /previous/i });
 
       expect(previousLink).not.toBeInTheDocument();
@@ -92,9 +94,8 @@ describe("JobListings", () => {
 
     it("shows link to next page", async () => {
       useRoute.mockReturnValue({ query: { page: 1 } });
-      renderJobListings();
-      const jobsStore = useJobsStore();
-      jobsStore.jobs = Array(15).fill({});
+      const { jobsStore } = renderJobListings();
+      jobsStore.FILTERED_JOBS = Array(15).fill({});
       await flushPromises();
       const nextLink = screen.queryByRole("link", { name: /next/i });
 
@@ -105,9 +106,9 @@ describe("JobListings", () => {
   describe("when user is on last page", () => {
     it("does not show link to next page", async () => {
       useRoute.mockReturnValue({ query: { page: 2 } });
-      renderJobListings();
-      const jobsStore = useJobsStore();
-      jobsStore.jobs = Array(15).fill({});
+      const { jobsStore } = renderJobListings();
+      jobsStore.FILTERED_JOBS = Array(15).fill({});
+      await flushPromises();
       const nextLink = screen.queryByRole("link", { name: /next/i });
 
       expect(nextLink).not.toBeInTheDocument();
@@ -115,9 +116,8 @@ describe("JobListings", () => {
 
     it("shows link to previous page", async () => {
       useRoute.mockReturnValue({ query: { page: 2 } });
-      renderJobListings();
-      const jobsStore = useJobsStore();
-      jobsStore.jobs = Array(15).fill({});
+      const { jobsStore } = renderJobListings();
+      jobsStore.FILTERED_JOBS = Array(15).fill({});
       await flushPromises();
       const previousLink = screen.queryByRole("link", { name: /previous/i });
 
