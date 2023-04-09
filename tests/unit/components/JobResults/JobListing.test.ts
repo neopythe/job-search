@@ -1,18 +1,14 @@
 import { render, screen } from "@testing-library/vue";
 import { RouterLinkStub } from "@vue/test-utils";
 
+import type { Job } from "@/api/types";
+
+import createJob from "tests/utils/createJob";
+
 import JobListing from "@/components/JobResults/JobListing.vue";
 
 describe("JobListing", () => {
-  const createJobProps = (jobProps = {}) => ({
-    title: "Vue Developer",
-    organization: "Airbnb",
-    locations: ["New York"],
-    minimumQualifications: ["Code"],
-    ...jobProps,
-  });
-
-  const renderJobListing = (jobProps) => {
+  const renderJobListing = (job: Job) => {
     render(JobListing, {
       global: {
         stubs: {
@@ -21,39 +17,39 @@ describe("JobListing", () => {
       },
       props: {
         job: {
-          ...jobProps,
+          ...job,
         },
       },
     });
   };
 
   it("renders job title", () => {
-    const jobProps = createJobProps({ title: "Vue Programmer" });
-    renderJobListing(jobProps);
+    const job = createJob({ title: "Vue Programmer" });
+    renderJobListing(job);
 
     expect(screen.getByText("Vue Programmer")).toBeInTheDocument();
   });
 
   it("renders job organization", () => {
-    const jobProps = createJobProps({ organization: "Samsung" });
-    renderJobListing(jobProps);
+    const job = createJob({ organization: "Samsung" });
+    renderJobListing(job);
 
     expect(screen.getByText("Samsung")).toBeInTheDocument();
   });
 
   it("renders job locations", () => {
-    const jobProps = createJobProps({ locations: ["Orlando", "Jacksonville"] });
-    renderJobListing(jobProps);
+    const job = createJob({ locations: ["Orlando", "Jacksonville"] });
+    renderJobListing(job);
 
     expect(screen.getByText("Orlando")).toBeInTheDocument();
     expect(screen.getByText("Jacksonville")).toBeInTheDocument();
   });
 
   it("renders job qualifications", () => {
-    const jobProps = createJobProps({
+    const job = createJob({
       minimumQualifications: ["Code", "Develop"],
     });
-    renderJobListing(jobProps);
+    renderJobListing(job);
 
     expect(screen.getByText("Code")).toBeInTheDocument();
     expect(screen.getByText("Develop")).toBeInTheDocument();
