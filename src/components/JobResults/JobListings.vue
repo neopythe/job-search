@@ -31,13 +31,13 @@
   </main>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 
 import { useJobsStore } from "@/stores/jobs";
 
-import usePreviousAndNextPages from "@/composables/usePreviousandNextPages";
+import usePreviousAndNextPages from "@/composables/usePreviousAndNextPages";
 
 import JobListing from "@/components/JobResults/JobListing.vue";
 
@@ -54,9 +54,9 @@ const displayedJobs = computed(() => {
 });
 
 const currentPage = computed(() => {
-  if (route.query?.page < 1) return 1;
-  if (route.query?.page > maxPage.value) return maxPage.value;
-  return parseInt(route.query?.page) || 1;
+  if (Number(route.query?.page) < 1) return 1;
+  if (Number(route.query?.page) > maxPage.value) return maxPage.value;
+  return +(route.query?.page as string) || 1;
 });
 
 const maxPage = computed(() => {

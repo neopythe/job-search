@@ -1,3 +1,5 @@
+import type { Mock } from "vitest";
+
 import { useRoute } from "vue-router";
 import { render, screen } from "@testing-library/vue";
 import { flushPromises, RouterLinkStub } from "@vue/test-utils";
@@ -9,10 +11,13 @@ import JobListings from "@/components/JobResults/JobListings.vue";
 
 vi.mock("vue-router");
 
+const useRouteMock = useRoute as Mock;
+
 describe("JobListings", () => {
   const renderJobListings = () => {
     const pinia = createTestingPinia();
     const jobsStore = useJobsStore();
+    // @ts-expect-error: getter is read-only
     jobsStore.FILTERED_JOBS = Array(15).fill({});
     render(JobListings, {
       global: {
@@ -26,15 +31,16 @@ describe("JobListings", () => {
   };
 
   it("fetches jobs", () => {
-    useRoute.mockReturnValue({ query: {} });
+    useRouteMock.mockReturnValue({ query: {} });
     const { jobsStore } = renderJobListings();
 
     expect(jobsStore.FETCH_JOBS).toHaveBeenCalled();
   });
 
   it("displays maximum of 10 jobs", async () => {
-    useRoute.mockReturnValue({ query: { page: 1 } });
+    useRouteMock.mockReturnValue({ query: { page: 1 } });
     const { jobsStore } = renderJobListings();
+    // @ts-expect-error: getter is read-only
     jobsStore.FILTERED_JOBS = Array(15).fill({});
     const jobListings = await screen.findAllByRole("listitem");
 
@@ -43,7 +49,7 @@ describe("JobListings", () => {
 
   describe("when params exclude page number", () => {
     it("displays page number 1", () => {
-      useRoute.mockReturnValue({ query: {} });
+      useRouteMock.mockReturnValue({ query: {} });
       renderJobListings();
 
       expect(screen.getByText("Page 1", { exact: false })).toBeInTheDocument();
@@ -52,8 +58,9 @@ describe("JobListings", () => {
 
   describe("when params include page number", () => {
     it("displays page number", async () => {
-      useRoute.mockReturnValue({ query: { page: 2 } });
+      useRouteMock.mockReturnValue({ query: { page: 2 } });
       const { jobsStore } = renderJobListings();
+      // @ts-expect-error: getter is read-only
       jobsStore.FILTERED_JOBS = Array(15).fill({});
       await flushPromises();
 
@@ -63,7 +70,7 @@ describe("JobListings", () => {
 
   describe("when params include a page number less than 1", () => {
     it("displays page number 1", () => {
-      useRoute.mockReturnValue({ query: { page: 0 } });
+      useRouteMock.mockReturnValue({ query: { page: 0 } });
       renderJobListings();
 
       expect(screen.getByText("Page 1", { exact: false })).toBeInTheDocument();
@@ -72,8 +79,9 @@ describe("JobListings", () => {
 
   describe("when params include a page number greater than the maximum", () => {
     it("displays the maximum page number", async () => {
-      useRoute.mockReturnValue({ query: { page: 2 } });
+      useRouteMock.mockReturnValue({ query: { page: 2 } });
       const { jobsStore } = renderJobListings();
+      // @ts-expect-error: getter is read-only
       jobsStore.FILTERED_JOBS = Array(0).fill({});
       await flushPromises();
 
@@ -83,8 +91,9 @@ describe("JobListings", () => {
 
   describe("when user is on first page", () => {
     it("does not show link to previous page", async () => {
-      useRoute.mockReturnValue({ query: { page: 1 } });
+      useRouteMock.mockReturnValue({ query: { page: 1 } });
       const { jobsStore } = renderJobListings();
+      // @ts-expect-error: getter is read-only
       jobsStore.FILTERED_JOBS = Array(15).fill({});
       await flushPromises();
       const previousLink = screen.queryByRole("link", { name: /previous/i });
@@ -93,8 +102,9 @@ describe("JobListings", () => {
     });
 
     it("shows link to next page", async () => {
-      useRoute.mockReturnValue({ query: { page: 1 } });
+      useRouteMock.mockReturnValue({ query: { page: 1 } });
       const { jobsStore } = renderJobListings();
+      // @ts-expect-error: getter is read-only
       jobsStore.FILTERED_JOBS = Array(15).fill({});
       await flushPromises();
       const nextLink = screen.queryByRole("link", { name: /next/i });
@@ -105,8 +115,9 @@ describe("JobListings", () => {
 
   describe("when user is on last page", () => {
     it("does not show link to next page", async () => {
-      useRoute.mockReturnValue({ query: { page: 2 } });
+      useRouteMock.mockReturnValue({ query: { page: 2 } });
       const { jobsStore } = renderJobListings();
+      // @ts-expect-error: getter is read-only
       jobsStore.FILTERED_JOBS = Array(15).fill({});
       await flushPromises();
       const nextLink = screen.queryByRole("link", { name: /next/i });
@@ -115,8 +126,9 @@ describe("JobListings", () => {
     });
 
     it("shows link to previous page", async () => {
-      useRoute.mockReturnValue({ query: { page: 2 } });
+      useRouteMock.mockReturnValue({ query: { page: 2 } });
       const { jobsStore } = renderJobListings();
+      // @ts-expect-error: getter is read-only
       jobsStore.FILTERED_JOBS = Array(15).fill({});
       await flushPromises();
       const previousLink = screen.queryByRole("link", { name: /previous/i });
