@@ -29,12 +29,12 @@
   </form>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 import ActionButton from "@/components/Shared/ActionButton.vue";
-import TextInput from "@/components/shared/TextInput.vue";
+import TextInput from "@/components/Shared/TextInput.vue";
 
 const role = ref("");
 const location = ref("");
