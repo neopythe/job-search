@@ -37,6 +37,15 @@ describe("actions", () => {
     setActivePinia(createPinia());
   });
 
+  describe("ADD_SELECTED_DEGREES", () => {
+    it("updates degrees by which the user has chosen to filter jobs", () => {
+      const store = useUserStore();
+      store.ADD_SELECTED_DEGREES(["Associate", "Bachelor's"]);
+
+      expect(store.selectedDegrees).toEqual(["Associate", "Bachelor's"]);
+    });
+  });
+
   describe("ADD_SELECTED_JOB_TYPES", () => {
     it("updates job types by which the user has chosen to filter jobs", () => {
       const store = useUserStore();
