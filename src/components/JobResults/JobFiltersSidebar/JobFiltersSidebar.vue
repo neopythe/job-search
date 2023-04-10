@@ -12,16 +12,7 @@
     ]"
   >
     <section class="pb-5">
-      <div class="flex flex-row justify-between">
-        <h3 class="my-3 font-semibold">What do you want to do?</h3>
-        <div class="flex items-center text-sm">
-          <action-button
-            text="Clear filters"
-            type="secondary"
-            @click="userStore.CLEAR_FILTERS"
-          />
-        </div>
-      </div>
+      <job-filters-sidebar-prompt />
       <collapsible-accordion header="Degree">
         <job-filters-sidebar-degrees />
       </collapsible-accordion>
@@ -40,11 +31,11 @@ import { computed } from "vue";
 
 import { useUserStore } from "@/stores/user";
 
-import ActionButton from "@/components/Shared/ActionButton.vue";
 import CollapsibleAccordion from "@/components/Shared/CollapsibleAccordion.vue";
 import JobFiltersSidebarDegrees from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarDegrees.vue";
 import JobFiltersSidebarJobTypes from "./JobFiltersSidebarJobTypes.vue";
 import JobFiltersSidebarOrganizations from "./JobFiltersSidebarOrganizations.vue";
+import JobFiltersSidebarPrompt from "./JobFiltersSidebarPrompt.vue";
 
 const userStore = useUserStore();
 const heightClass = computed(() =>
