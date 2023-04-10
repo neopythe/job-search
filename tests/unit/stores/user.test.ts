@@ -64,6 +64,20 @@ describe("actions", () => {
     });
   });
 
+  describe("CLEAR_FILTERS", () => {
+    it("removes all job filters that user has chosen", () => {
+      const store = useUserStore();
+      store.selectedDegrees = ["Associate"];
+      store.selectedJobTypes = ["Intern"];
+      store.selectedOrganizations = ["Microsoft"];
+      store.CLEAR_FILTERS();
+
+      expect(store.selectedDegrees).toEqual([]);
+      expect(store.selectedJobTypes).toEqual([]);
+      expect(store.selectedOrganizations).toEqual([]);
+    });
+  });
+
   describe("LOGIN_USER", () => {
     it("logs the user in", () => {
       const store = useUserStore();

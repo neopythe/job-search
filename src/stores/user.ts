@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 export const ADD_SELECTED_DEGREES = "ADD_SELECTED_DEGREES";
 export const ADD_SELECTED_JOB_TYPES = "ADD_SELECTED_JOB_TYPES";
 export const ADD_SELECTED_ORGANIZATIONS = "ADD_SELECTED_ORGANIZATIONS";
+export const CLEAR_FILTERS = "CLEAR_FILTERS";
 export const LOGIN_USER = "LOGIN_USER";
 
 export interface UserState {
@@ -28,6 +29,11 @@ export const useUserStore = defineStore("user", {
     },
     [ADD_SELECTED_ORGANIZATIONS](organizations: string[]) {
       this.selectedOrganizations = organizations;
+    },
+    [CLEAR_FILTERS]() {
+      this.selectedDegrees = [];
+      this.selectedJobTypes = [];
+      this.selectedOrganizations = [];
     },
     [LOGIN_USER]() {
       this.isLoggedIn = true;
