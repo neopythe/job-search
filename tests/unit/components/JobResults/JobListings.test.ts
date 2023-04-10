@@ -5,6 +5,7 @@ import { render, screen } from "@testing-library/vue";
 import { flushPromises, RouterLinkStub } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 
+import { useDegreesStore } from "@/stores/degrees";
 import { useJobsStore } from "@/stores/jobs";
 
 import JobListings from "@/components/JobResults/JobListings.vue";
@@ -16,6 +17,7 @@ const useRouteMock = useRoute as Mock;
 describe("JobListings", () => {
   const renderJobListings = () => {
     const pinia = createTestingPinia();
+    const degreesStore = useDegreesStore();
     const jobsStore = useJobsStore();
     // @ts-expect-error: getter is read-only
     jobsStore.FILTERED_JOBS = Array(15).fill({});
@@ -27,8 +29,15 @@ describe("JobListings", () => {
         },
       },
     });
-    return { jobsStore };
+    return { degreesStore, jobsStore };
   };
+
+  it("fetches degrees", () => {
+    useRouteMock.mockReturnValue({ query: {} });
+    const { degreesStore } = renderJobListings();
+
+    expect(degreesStore.FETCH_DEGREES).toHaveBeenCalled();
+  });
 
   it("fetches jobs", () => {
     useRouteMock.mockReturnValue({ query: {} });

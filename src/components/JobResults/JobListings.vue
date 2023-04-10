@@ -35,15 +35,19 @@
 import { computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 
+import { useDegreesStore } from "@/stores/degrees";
 import { useJobsStore } from "@/stores/jobs";
 
 import usePreviousAndNextPages from "@/composables/usePreviousAndNextPages";
 
 import JobListing from "@/components/JobResults/JobListing.vue";
 
+const degreesStore = useDegreesStore();
+
 const jobsStore = useJobsStore();
 const FILTERED_JOBS = computed(() => jobsStore.FILTERED_JOBS);
 
+onMounted(degreesStore.FETCH_DEGREES);
 onMounted(jobsStore.FETCH_JOBS);
 
 const route = useRoute();
