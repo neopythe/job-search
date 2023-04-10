@@ -1,3 +1,8 @@
+export interface Degree {
+  id: number;
+  degree: string;
+}
+
 export interface Job {
   id: number;
   title: string;
