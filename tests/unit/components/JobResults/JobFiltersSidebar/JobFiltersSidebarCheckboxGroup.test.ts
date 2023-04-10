@@ -5,6 +5,8 @@ import { createTestingPinia } from "@pinia/testing";
 import { render, screen } from "@testing-library/vue";
 import userEvent from "@testing-library/user-event";
 
+import { useUserStore } from "@/stores/user";
+
 import JobFiltersSidebarCheckboxGroup from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarCheckboxGroup.vue";
 
 vi.mock("vue-router");
@@ -28,16 +30,17 @@ describe("JobFiltersSidebarCheckboxGroup", () => {
   const renderJobFiltersSidebarCheckboxGroup = (
     props: JobFiltersSidebarCheckboxGroupProps
   ) => {
-    const pinia = createTestingPinia();
+    const pinia = createTestingPinia({ stubActions: false });
+    const userStore = useUserStore();
     render(JobFiltersSidebarCheckboxGroup, {
       props: {
         ...props,
       },
       global: {
         plugins: [pinia],
-        stubs: { FontAwesomeIcon: true },
       },
     });
+    return { userStore };
   };
 
   it("renders list of unique values", () => {
@@ -81,6 +84,33 @@ describe("JobFiltersSidebarCheckboxGroup", () => {
       await userEvent.click(internCheckbox);
 
       expect(push).toHaveBeenCalledWith({ name: "JobResults" });
+    });
+  });
+
+  describe("when user clears job filters", () => {
+    it("unchecks any checked checkboxes", async () => {
+      useRouterMock.mockReturnValue({ push: vi.fn() });
+      const props = createProps({
+        uniqueValues: new Set(["Intern"]),
+      });
+      const { userStore } = renderJobFiltersSidebarCheckboxGroup(props);
+      const internCheckboxPreAction = screen.getByRole<HTMLInputElement>(
+        "checkbox",
+        {
+          name: /intern/i,
+        }
+      );
+      await userEvent.click(internCheckboxPreAction);
+
+      expect(internCheckboxPreAction.checked).toBe(true);
+
+      userStore.CLEAR_FILTERS();
+      const internCheckboxPostAction =
+        await screen.findByRole<HTMLInputElement>("checkbox", {
+          name: /intern/i,
+        });
+
+      expect(internCheckboxPostAction.checked).toBe(false);
     });
   });
 });
