@@ -31,6 +31,7 @@ export const useJobsStore = defineStore("jobs", {
   getters: {
     [FILTERED_JOBS]({ jobs }): Job[] {
       return jobs
+        .filter((job) => this.INCLUDE_JOB_BY_DEGREE(job))
         .filter((job) => this.INCLUDE_JOB_BY_JOB_TYPE(job))
         .filter((job) => this.INCLUDE_JOB_BY_ORGANIZATION(job));
     },
