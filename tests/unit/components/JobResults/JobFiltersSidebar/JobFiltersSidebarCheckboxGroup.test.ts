@@ -13,7 +13,6 @@ const useRouterMock = useRouter as Mock;
 
 describe("JobFiltersSidebarCheckboxGroup", () => {
   interface JobFiltersSidebarCheckboxGroupProps {
-    header: string;
     uniqueValues: Set<string>;
     action: Mock;
   }
@@ -21,7 +20,6 @@ describe("JobFiltersSidebarCheckboxGroup", () => {
   const createProps = (
     props: Partial<JobFiltersSidebarCheckboxGroupProps> = {}
   ): JobFiltersSidebarCheckboxGroupProps => ({
-    header: "Some header",
     uniqueValues: new Set(["ValueA", "ValueB"]),
     action: vi.fn(),
     ...props,
@@ -42,14 +40,11 @@ describe("JobFiltersSidebarCheckboxGroup", () => {
     });
   };
 
-  it("renders list of unique values", async () => {
+  it("renders list of unique values", () => {
     const props = createProps({
-      header: "Job types",
       uniqueValues: new Set(["Full-time", "Intern"]),
     });
     renderJobFiltersSidebarCheckboxGroup(props);
-    const button = screen.getByRole("button", { name: /job types/i });
-    await userEvent.click(button);
     const jobTypeListItems = screen.getAllByRole("listitem");
     const jobTypes = jobTypeListItems.map((node) => node.textContent);
 
@@ -61,13 +56,10 @@ describe("JobFiltersSidebarCheckboxGroup", () => {
       useRouterMock.mockReturnValue({ push: vi.fn() });
       const action = vi.fn();
       const props = createProps({
-        header: "Job types",
         uniqueValues: new Set(["Intern", "Part-time"]),
         action,
       });
       renderJobFiltersSidebarCheckboxGroup(props);
-      const button = screen.getByRole("button", { name: /job types/i });
-      await userEvent.click(button);
       const internCheckbox = screen.getByRole("checkbox", {
         name: /intern/i,
       });
@@ -80,12 +72,9 @@ describe("JobFiltersSidebarCheckboxGroup", () => {
       const push = vi.fn();
       useRouterMock.mockReturnValue({ push });
       const props = createProps({
-        header: "Job types",
         uniqueValues: new Set(["Intern"]),
       });
       renderJobFiltersSidebarCheckboxGroup(props);
-      const button = screen.getByRole("button", { name: /job types/i });
-      await userEvent.click(button);
       const internCheckbox = screen.getByRole("checkbox", {
         name: /intern/i,
       });
