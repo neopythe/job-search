@@ -13,6 +13,12 @@ describe("state", () => {
     expect(store.isLoggedIn).toBe(false);
   });
 
+  it("stores degrees by which the user would like to filter jobs", () => {
+    const store = useUserStore();
+
+    expect(store.selectedDegrees).toEqual([]);
+  });
+
   it("stores job types by which the user would like to filter jobs", () => {
     const store = useUserStore();
 

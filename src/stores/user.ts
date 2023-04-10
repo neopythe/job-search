@@ -6,13 +6,15 @@ export const LOGIN_USER = "LOGIN_USER";
 
 export interface UserState {
   isLoggedIn: boolean;
-  selectedOrganizations: string[];
+  selectedDegrees: string[];
   selectedJobTypes: string[];
+  selectedOrganizations: string[];
 }
 
 export const useUserStore = defineStore("user", {
   state: (): UserState => ({
     isLoggedIn: false,
+    selectedDegrees: [],
     selectedJobTypes: [],
     selectedOrganizations: [],
   }),
