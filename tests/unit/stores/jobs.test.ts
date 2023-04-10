@@ -51,7 +51,7 @@ describe("getters", () => {
         const userStore = useUserStore();
         userStore.selectedDegrees = [];
         const jobsStore = useJobsStore();
-        const job = createJob({ degree: "Bachelor's" });
+        const job = createJob();
         const result = jobsStore.INCLUDE_JOB_BY_DEGREE(job);
 
         expect(result).toBe(true);
@@ -75,7 +75,7 @@ describe("getters", () => {
         const userStore = useUserStore();
         userStore.selectedJobTypes = [];
         const jobsStore = useJobsStore();
-        const job = createJob({ jobType: "Full-time" });
+        const job = createJob();
         const result = jobsStore.INCLUDE_JOB_BY_JOB_TYPE(job);
 
         expect(result).toBe(true);
@@ -99,7 +99,7 @@ describe("getters", () => {
         const userStore = useUserStore();
         userStore.selectedOrganizations = [];
         const jobsStore = useJobsStore();
-        const job = createJob({ organization: "Google" });
+        const job = createJob();
         const result = jobsStore.INCLUDE_JOB_BY_ORGANIZATION(job);
 
         expect(result).toBe(true);
