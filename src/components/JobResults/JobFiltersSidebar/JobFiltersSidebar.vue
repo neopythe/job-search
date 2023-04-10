@@ -23,22 +23,13 @@
         </div>
       </div>
       <collapsible-accordion header="Degree">
-        <job-filters-sidebar-checkbox-group
-          :unique-values="UNIQUE_DEGREES"
-          :action="userStore.ADD_SELECTED_DEGREES"
-        />
+        <job-filters-sidebar-degrees />
       </collapsible-accordion>
       <collapsible-accordion header="Job types">
-        <job-filters-sidebar-checkbox-group
-          :unique-values="UNIQUE_JOB_TYPES"
-          :action="userStore.ADD_SELECTED_JOB_TYPES"
-        />
+        <job-filters-sidebar-job-types />
       </collapsible-accordion>
       <collapsible-accordion header="Organizations">
-        <job-filters-sidebar-checkbox-group
-          :unique-values="UNIQUE_ORGANIZATIONS"
-          :action="userStore.ADD_SELECTED_ORGANIZATIONS"
-        />
+        <job-filters-sidebar-organizations />
       </collapsible-accordion>
     </section>
   </div>
@@ -47,20 +38,13 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { useDegreesStore } from "@/stores/degrees";
-import { useJobsStore } from "@/stores/jobs";
 import { useUserStore } from "@/stores/user";
 
 import ActionButton from "@/components/Shared/ActionButton.vue";
 import CollapsibleAccordion from "@/components/Shared/CollapsibleAccordion.vue";
-import JobFiltersSidebarCheckboxGroup from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarCheckboxGroup.vue";
-
-const degreesStore = useDegreesStore();
-const UNIQUE_DEGREES = computed(() => degreesStore.UNIQUE_DEGREES);
-
-const jobsStore = useJobsStore();
-const UNIQUE_JOB_TYPES = computed(() => jobsStore.UNIQUE_JOB_TYPES);
-const UNIQUE_ORGANIZATIONS = computed(() => jobsStore.UNIQUE_ORGANIZATIONS);
+import JobFiltersSidebarDegrees from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarDegrees.vue";
+import JobFiltersSidebarJobTypes from "./JobFiltersSidebarJobTypes.vue";
+import JobFiltersSidebarOrganizations from "./JobFiltersSidebarOrganizations.vue";
 
 const userStore = useUserStore();
 const heightClass = computed(() =>
