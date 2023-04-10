@@ -45,6 +45,30 @@ describe("getters", () => {
     setActivePinia(createPinia());
   });
 
+  describe("INCLUDE_JOB_BY_DEGREE", () => {
+    describe("when the user has not selected any degrees", () => {
+      it("includes degree", () => {
+        const userStore = useUserStore();
+        userStore.selectedDegrees = [];
+        const jobsStore = useJobsStore();
+        const job = createJob({ degree: "Bachelor's" });
+        const result = jobsStore.INCLUDE_JOB_BY_DEGREE(job);
+
+        expect(result).toBe(true);
+      });
+    });
+
+    it("identifies whether job is associated with given degrees", () => {
+      const userStore = useUserStore();
+      userStore.selectedDegrees = ["Associate", "Bachelor's"];
+      const jobsStore = useJobsStore();
+      const job = createJob({ degree: "Associate" });
+      const result = jobsStore.INCLUDE_JOB_BY_DEGREE(job);
+
+      expect(result).toBe(true);
+    });
+  });
+
   describe("INCLUDE_JOB_BY_JOB_TYPE", () => {
     describe("when the user has not selected any job types", () => {
       it("includes job", () => {
