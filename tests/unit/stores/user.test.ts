@@ -30,6 +30,12 @@ describe("state", () => {
 
     expect(store.selectedOrganizations).toEqual([]);
   });
+
+  it("stores user's search term for skills and qualifiications", () => {
+    const store = useUserStore();
+
+    expect(store.skillsSearchTerm).toBe("");
+  });
 });
 
 describe("actions", () => {
