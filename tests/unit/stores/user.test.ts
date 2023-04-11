@@ -76,11 +76,13 @@ describe("actions", () => {
       store.selectedDegrees = ["Associate"];
       store.selectedJobTypes = ["Intern"];
       store.selectedOrganizations = ["Microsoft"];
+      store.skillsSearchTerm = "Vue Developer";
       store.CLEAR_FILTERS();
 
       expect(store.selectedDegrees).toEqual([]);
       expect(store.selectedJobTypes).toEqual([]);
       expect(store.selectedOrganizations).toEqual([]);
+      expect(store.skillsSearchTerm).toBe("");
     });
   });
 
