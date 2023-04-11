@@ -92,4 +92,14 @@ describe("actions", () => {
       expect(store.isLoggedIn).toBe(true);
     });
   });
+
+  describe("UPDATE_SKILLS_SEARCH_TERM", () => {
+    it("receives search term for skills entered by user", () => {
+      const store = useUserStore();
+      store.skillsSearchTerm = "";
+      store.UPDATE_SKILLS_SEARCH_TERM("Vue");
+
+      expect(store.skillsSearchTerm).toBe("Vue");
+    });
+  });
 });

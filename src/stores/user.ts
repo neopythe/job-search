@@ -36,6 +36,10 @@ export const useUserStore = defineStore("user", () => {
     isLoggedIn.value = true;
   };
 
+  const UPDATE_SKILLS_SEARCH_TERM = (searchTerm: string) => {
+    skillsSearchTerm.value = searchTerm;
+  };
+
   return {
     isLoggedIn,
     selectedDegrees,
@@ -47,5 +51,6 @@ export const useUserStore = defineStore("user", () => {
     ADD_SELECTED_ORGANIZATIONS,
     CLEAR_FILTERS,
     LOGIN_USER,
+    UPDATE_SKILLS_SEARCH_TERM,
   };
 });
