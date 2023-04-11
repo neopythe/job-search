@@ -28,7 +28,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
+import { useRoute } from "vue-router";
 
 import { useUserStore } from "@/stores/user";
 
@@ -43,4 +44,13 @@ const userStore = useUserStore();
 const heightClass = computed(() =>
   userStore.isLoggedIn ? "min-h-[calc(100vh-8rem)]" : "min-h-[calc(100vh-4rem)]"
 );
+
+const route = useRoute();
+
+const parseSkillsSearchTerm = () => {
+  const role = (route.query.role as string) || "";
+  userStore.UPDATE_SKILLS_SEARCH_TERM(role);
+};
+
+onMounted(parseSkillsSearchTerm);
 </script>
