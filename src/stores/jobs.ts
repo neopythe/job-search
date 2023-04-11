@@ -11,6 +11,7 @@ export const FILTERED_JOBS = "FILTERED_JOBS";
 export const INCLUDE_JOB_BY_DEGREE = "INCLUDE_JOB_BY_DEGREE";
 export const INCLUDE_JOB_BY_JOB_TYPE = "INCLUDE_JOB_BY_JOB_TYPE";
 export const INCLUDE_JOB_BY_ORGANIZATION = "INCLUDE_JOB_BY_ORGANIZATION";
+export const INCLUDE_JOB_BY_SKILL = "INCLUDE_JOB_BY_SKILL";
 export const UNIQUE_JOB_TYPES = "UNIQUE_JOB_TYPES";
 export const UNIQUE_ORGANIZATIONS = "UNIQUE_ORGANIZATIONS";
 
@@ -33,7 +34,8 @@ export const useJobsStore = defineStore("jobs", {
       return jobs
         .filter((job) => this.INCLUDE_JOB_BY_DEGREE(job))
         .filter((job) => this.INCLUDE_JOB_BY_JOB_TYPE(job))
-        .filter((job) => this.INCLUDE_JOB_BY_ORGANIZATION(job));
+        .filter((job) => this.INCLUDE_JOB_BY_ORGANIZATION(job))
+        .filter((job) => this.INCLUDE_JOB_BY_SKILL(job));
     },
     [INCLUDE_JOB_BY_DEGREE]:
       () =>
@@ -58,6 +60,12 @@ export const useJobsStore = defineStore("jobs", {
         return selectedOrganizations.length > 0
           ? selectedOrganizations.includes(organization)
           : true;
+      },
+    [INCLUDE_JOB_BY_SKILL]:
+      () =>
+      ({ title }: Job) => {
+        const { skillsSearchTerm } = useUserStore();
+        return title.includes(skillsSearchTerm);
       },
     [UNIQUE_JOB_TYPES]({ jobs }) {
       const uniqueJobTypes = new Set<string>();

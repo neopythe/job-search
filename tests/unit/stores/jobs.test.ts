@@ -117,6 +117,18 @@ describe("getters", () => {
     });
   });
 
+  describe("INCLUDE_JOB_BY_SKILL", () => {
+    it("identifies whether job matches user's skill", () => {
+      const userStore = useUserStore();
+      userStore.skillsSearchTerm = "Vue";
+      const jobsStore = useJobsStore();
+      const job = createJob({ title: "Vue Developer" });
+      const result = jobsStore.INCLUDE_JOB_BY_SKILL(job);
+
+      expect(result).toBe(true);
+    });
+  });
+
   describe("UNIQUE_JOB_TYPES", () => {
     it("finds unique job types from list of jobs", () => {
       const store = useJobsStore();
