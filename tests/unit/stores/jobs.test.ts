@@ -1,4 +1,4 @@
-import type { Mock } from "vitest";
+import { it, type Mock } from "vitest";
 
 import { createPinia, setActivePinia } from "pinia";
 import axios from "axios";
@@ -126,6 +126,28 @@ describe("getters", () => {
       const result = jobsStore.INCLUDE_JOB_BY_SKILL(job);
 
       expect(result).toBe(true);
+    });
+
+    it("handles inconsistent character casing", () => {
+      const userStore = useUserStore();
+      userStore.skillsSearchTerm = "vuE";
+      const jobsStore = useJobsStore();
+      const job = createJob({ title: "Vue Developer" });
+      const result = jobsStore.INCLUDE_JOB_BY_SKILL(job);
+
+      expect(result).toBe(true);
+    });
+
+    describe("when the user has not entered any skill", () => {
+      it("includes job", () => {
+        const userStore = useUserStore();
+        userStore.skillsSearchTerm = "";
+        const jobsStore = useJobsStore();
+        const job = createJob({ title: "Vue Developer" });
+        const result = jobsStore.INCLUDE_JOB_BY_SKILL(job);
+
+        expect(result).toBe(true);
+      });
     });
   });
 

@@ -65,7 +65,7 @@ export const useJobsStore = defineStore("jobs", {
       () =>
       ({ title }: Job) => {
         const { skillsSearchTerm } = useUserStore();
-        return title.includes(skillsSearchTerm);
+        return title.toLowerCase().includes(skillsSearchTerm.toLowerCase());
       },
     [UNIQUE_JOB_TYPES]({ jobs }) {
       const uniqueJobTypes = new Set<string>();
